@@ -23,7 +23,7 @@ class Comm():
         spi = SPI(0,0)
         spi.msh = 2000000
         spi.mode = 1
-
+        self.chs  = [0, 1, 2, 3]
         self.ADC0 = ADC("P9_24", spi)
         self.ADC1 = ADC("P9_26", spi)
         self.ADC2 = ADC("P9_28", spi)
@@ -66,13 +66,13 @@ class Comm():
             while True:
                 command = connection.recv(1024).decode('utf-8')
                 if command   == 'ADC0:DATA?':
-                    response = str(ADC0.read([0,1,2,3]))
+                    response = str(self.ADC0.read(self.chs))
                 elif command == 'ADC1:DATA?':
-                    response = str(ADC1.read([0,1,2,3]))
+                    response = str(self.ADC1.read(self.chs))
                 elif command == 'ADC2:DATA?':
-                    response = str(ADC2.read([0,1,2,3]))
+                    response = str(self.ADC2.read(self.chs))
                 elif command == 'ADC3:DATA?':
-                    response = str(ADC3.read([0,1,2,3]))
+                    response = str(self.ADC3.read(self.chs))
                 else:
                     response = ResponseType.UNSUPPORTED_COMMAND
 
