@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import Adafruit_BBIO.GPIO as GPIO
-from Adafruit_BBIO.SPI import SPI
 
 class ADC:
     
