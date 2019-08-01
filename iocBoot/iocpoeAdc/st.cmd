@@ -5,14 +5,17 @@
 
 < envPaths
 
+epicsEnvSet("P","Test:")
+epicsEnvSet("R","")
+
 cd "${TOP}"
 
-## Register all support components
 dbLoadDatabase "dbd/poeAdc.dbd"
 poeAdc_registerRecordDeviceDriver pdbbase
 
-## Load record instances
-#dbLoadRecords("db/xxx.db","user=root")
+dbLoadRecords("db/ADC.db", "P=$(P),R=$(R),PORT=L0,A=0")
+
+drvAsynIPPortConfigure("L0", "unix://$(TOP)/poeAdcSPI/unix-socket")
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
