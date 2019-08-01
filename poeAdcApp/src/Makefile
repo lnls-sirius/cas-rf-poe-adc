@@ -15,11 +15,16 @@ DBD += poeAdc.dbd
 # poeAdc.dbd will be made up from these files:
 poeAdc_DBD += base.dbd
 
-# Include dbd files from all support applications:
-#poeAdc_DBD += xxx.dbd
-
-# Add all the support libraries needed by this IOC
-#poeAdc_LIBS += xxx
+poeAdc_DBD += asSupport.dbd
+poeAdc_DBD += calcSupport.dbd
+poeAdc_DBD += asyn.dbd
+poeAdc_DBD += stream.dbd
+poeAdc_DBD += drvAsynIPPort.dbd
+ 
+poeAdc_LIBS += autosave
+poeAdc_LIBS += stream
+poeAdc_LIBS += asyn
+poeAdc_LIBS += calc
 
 # poeAdc_registerRecordDeviceDriver.cpp derives from poeAdc.dbd
 poeAdc_SRCS += poeAdc_registerRecordDeviceDriver.cpp
