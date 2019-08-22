@@ -30,31 +30,19 @@ class ADC:
     def read(self,channels):
         " Retorna valor medido pelo ADC (Valor de 0 4095) "
         saida = []
-        if type(channels) == list:
-            tamanho = len(channels)
-            
-            _channels = channels[:]
-            _channels.append(channels[tamanho-1]+1)
-            for i in _channels:
-                GPIO.output(self.port, 0)
-                data = self.spi.xfer2([0x83 + (4)*i, 0x10])
-                GPIO.output(self.port, 1)
-                calc = (data[0] - (i-1)*(16)) * (256) + data[1]
-                if calc > (4096):
-                    calc = 0
-                saida.append(calc)
-            return saida[1:]
-        else:
-            c = channels
-            for i in range(2):
-                GPIO.output(self.port,0)
-                data = self.spi.xfer2([0x83+(4)*c,0x10])
-                GPIO.output(self.port,1)
-            calc = (data[0] - (c)*(16)) * (256) + data[1]
-            if calc > 4096:
+        tamanho = len(channels)
+        
+        _channels = channels[:]
+        _channels.append(channels[tamanho-1]+1)
+        for i in _channels:
+            GPIO.output(self.port, 0)
+            data = self.spi.xfer2([0x83 + (4)*i, 0x10])
+            GPIO.output(self.port, 1)
+            calc = (data[0] - (i-1)*(16)) * (256) + data[1]
+            if calc > (4096):
                 calc = 0
-            saida = (calc)
-            return saida
+            saida.append(calc)
+        return saida[1:]
             
 ''' 
         
