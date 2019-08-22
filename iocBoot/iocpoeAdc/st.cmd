@@ -5,7 +5,7 @@
 
 < envPaths
 
-epicsEnvSet("P","Test:")
+epicsEnvSet("P","Test")
 epicsEnvSet("R","")
 
 cd "${TOP}"
@@ -13,12 +13,12 @@ cd "${TOP}"
 dbLoadDatabase "dbd/poeAdc.dbd"
 poeAdc_registerRecordDeviceDriver pdbbase
 
-dbLoadRecords("db/ADC.db", "P=$(P),R=$(R),PORT=L0,A=0")
+dbLoadRecords("db/ADC.db",  "P=$(P),R=$(R),PORT=L0,A=0,SCAN=0.1 second,SCAN=.1 second")
+dbLoadRecords("db/Conv.db", "P=$(P),R=$(R),PORT=L0,A=0")
 
 drvAsynIPPortConfigure("L0", "unix://$(TOP)/poeAdcSPI/unix-socket")
 
 cd "${TOP}/iocBoot/${IOC}"
 iocInit
 
-## Start any sequence programs
-#seq sncxxx,"user=root"
+#var streamDebug 1
