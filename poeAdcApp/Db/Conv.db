@@ -1,0 +1,112 @@
+
+record(calc, "$(P)$(R):ADC0:CH1:Voltage-Mon"){
+    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC0:CH2:Voltage-Mon"){
+    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC0:CH3:Voltage-Mon"){
+    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC0:CH4:Voltage-Mon"){
+    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC1:CH1:Voltage-Mon"){
+    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC1:CH2:Voltage-Mon"){
+    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC1:CH3:Voltage-Mon"){
+    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC1:CH4:Voltage-Mon"){
+    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC2:CH1:Voltage-Mon"){
+    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC2:CH2:Voltage-Mon"){
+    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC2:CH3:Voltage-Mon"){
+    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC2:CH4:Voltage-Mon"){
+    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC3:CH1:Voltage-Mon"){
+    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC3:CH2:Voltage-Mon"){
+    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC3:CH3:Voltage-Mon"){
+    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "$(P)$(R):ADC3:CH4:Voltage-Mon"){
+    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+    field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
