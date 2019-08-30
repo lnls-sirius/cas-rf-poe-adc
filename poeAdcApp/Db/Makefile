@@ -1,9 +1,9 @@
 TOP=../..
 include $(TOP)/configure/CONFIG
 
+DB += SIA-CalSys.db
+DB += SIA-CavPlDrv.db
 DB += ADC.db
-DB += Conv.db
-
 DB += ADC.proto
 
 include $(TOP)/configure/RULES

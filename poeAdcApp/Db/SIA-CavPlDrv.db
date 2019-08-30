@@ -1,0 +1,77 @@
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:Current5V-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon"){
+    field(CALC, "(5.*A/4095.)*(10.09)")
+    field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Sts"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "SI-03SP:RF-P5Cav:Pl1Pos-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Sts"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}
+
+record(calc, "SI-03SP:RF-P5Cav:Pl2Pos-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
+}

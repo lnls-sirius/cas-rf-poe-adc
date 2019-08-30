@@ -1,111 +1,111 @@
 
-record(calc, "$(P)$(R):ADC0:CH1:Voltage-Mon"){
-    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm1-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC0:CH2:Voltage-Mon"){
-    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm2-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[1] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC0:CH3:Voltage-Mon"){
-    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm3-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[2] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC0:CH4:Voltage-Mon"){
-    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm4-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC0:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC1:CH1:Voltage-Mon"){
-    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm5-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC1:CH2:Voltage-Mon"){
-    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm6-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[1] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC1:CH3:Voltage-Mon"){
-    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm7-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[2] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC1:CH4:Voltage-Mon"){
-    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm8-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC1:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC2:CH1:Voltage-Mon"){
-    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm9-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC2:CH2:Voltage-Mon"){
-    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm10-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[1] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC2:CH3:Voltage-Mon"){
-    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm11-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[2] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC2:CH4:Voltage-Mon"){
-    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm12-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC2:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC3:CH1:Voltage-Mon"){
-    field(CALC, "(0*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm13-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC3:CH2:Voltage-Mon"){
-    field(CALC, "(1*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm14-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[1] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC3:CH3:Voltage-Mon"){
-    field(CALC, "(2*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm15-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[2] CP MSS")
     field(EGU, "V")
     field(DESC, "")
 }
 
-record(calc, "$(P)$(R):ADC3:CH4:Voltage-Mon"){
-    field(CALC, "(3*A/4095.)*((1.0+1.0)/1.0)")
+record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm16-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "$(P)$(R):ADC3:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
     field(DESC, "")
