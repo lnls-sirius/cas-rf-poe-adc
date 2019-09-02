@@ -7,6 +7,8 @@ DB += SIA-CavPlDrv.db
 # DB += SIA-CavPlDrv.req
 DB += ADC.proto
 
+include $(TOP)/configure/RULES
+
 .PHONY: db
 db :
 	./gen.py
@@ -17,4 +19,4 @@ db :
 
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
-include $(TOP)/configure/RULES
+

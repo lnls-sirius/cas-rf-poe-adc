@@ -42,8 +42,8 @@ record(waveform, "SIA-CavPlDrv:ADC3:Data-Mon"){
     field(NELM, "4")
 }
 
-record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon_ADC"){
-    field(CALC, "(5.*A/4095.)*(1)")
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon"){
+    field(CALC, "(5.*A/4095.)*(1.)")
     field(INPA, "SIA-CavPlDrv:ADC0:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "")
@@ -58,7 +58,7 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:Current5V-Mon"){
 }
 
 
-record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon_ADC"){
+record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon"){
     field(CALC, "(5.*A/4095.)*(10.09)")
     field(INPA, "SIA-CavPlDrv:ADC0:Data-Mon.VAL[2] CP MSS")
     field(EGU, "V")
@@ -98,13 +98,12 @@ record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon"){
 }
 
 
-record(ai, "SI-03SP:RF-P5Cav:Pl1Pos-Mon"){
-    field(OSML, "closed_loop")
-    field(INP,  "SI-03SP:RF-P5Cav:Pl1Pos-Mon_CALC CP MSS")
-    field(PREC, "3")
-    field(EGU,  "V")
+record(calc, "SI-03SP:RF-P5Cav:Pl1Pos-Mon"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
 }
-
 
 # ((ADC2[0] - 0.5) / 0.4)
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon"){
@@ -139,10 +138,9 @@ record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon"){
 }
 
 
-record(ai, "SI-03SP:RF-P5Cav:Pl2Pos-Mon"){
-    field(OSML, "closed_loop")
-    field(INP,  "SI-03SP:RF-P5Cav:Pl2Pos-Mon_CALC CP MSS")
-    field(PREC, "3")
-    field(EGU,  "V")
+record(calc, "SI-03SP:RF-P5Cav:Pl2Pos-Mon"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "")
 }
-

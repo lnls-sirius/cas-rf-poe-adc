@@ -76,7 +76,7 @@ record(calc, "${NAME}:${W}${N}-Mon"){
 ''')
 
 voltage = Template('''
-record(calc, "${NAME}_ADC"){
+record(calc, "${NAME}"){
     field(CALC, "(5.*A/4095.)*(${CTE})")
     field(INPA, "${ioc}:ADC${ADC}:Data-Mon.VAL[${CH}] CP MSS")
     field(EGU, "V")
@@ -86,10 +86,8 @@ record(calc, "${NAME}_ADC"){
 
 raw = Template('''
 record(ai, "${NAME}"){
-    field(OSML, "closed_loop")
-    field(INP,  "${NAME}_CALC CP MSS")
+    field(INP,  "${ioc}:ADC${ADC}:Data-Mon.VAL[${CH}] CP MSS")
     field(PREC, "3")
-    field(EGU,  "V")
 }
 
 ''')
@@ -122,7 +120,7 @@ record(bi, "${NAME}"){
 def res(R, R_):
     return str(((R_+R)/R_))
 
-defaults = {'MIN':'-41.', 'CTE':'1', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB'}
+defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB'}
 
 dbs = [
     {'ioc':'SIA-CalSys',
@@ -156,12 +154,12 @@ dbs = [
         {'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon', 'template':current},
         {'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Sts',    'template':bi,  'ZNAM':'Enable', 'ONAM':'Disable'},
         {'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon',     'template':bi,  'ZNAM':'Fail',   'ONAM':'Normal'},
-        {'ADC':'1', 'CH':'3', 'NAME':'SI-03SP:RF-P5Cav:Pl1Pos-Mon',               'template':raw},
+        {'ADC':'1', 'CH':'3', 'NAME':'SI-03SP:RF-P5Cav:Pl1Pos-Mon',               'template':voltage},
 
         {'ADC':'2', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon', 'template':current},
         {'ADC':'2', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Sts',    'template':bi, 'ZNAM':'Enable', 'ONAM':'Disable'},
         {'ADC':'2', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon',     'template':bi, 'ZNAM':'Fail',   'ONAM':'Normal'},
-        {'ADC':'2', 'CH':'3', 'NAME':'SI-03SP:RF-P5Cav:Pl2Pos-Mon',               'template':raw},
+        {'ADC':'2', 'CH':'3', 'NAME':'SI-03SP:RF-P5Cav:Pl2Pos-Mon',               'template':voltage},
     ]},
 ]
 
