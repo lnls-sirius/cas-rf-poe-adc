@@ -12,7 +12,8 @@ RestartSec=10
 Type=simple
 
 WorkingDirectory=/opt/cas-rf-poe-adc/iocBoot/iocpoeAdc/
-ExecStart=/usr/local/bin/procServ -f --allow -L - --chdir /opt/cas-rf-poe-adc/iocBoot/iocpoeAdc 20200 ./st-SIA-CalSys.cmd
+ExecStartPre=/bin/sleep 50
+ExecStart=/usr/local/bin/procServ -f --allow -L - --chdir /opt/cas-rf-poe-adc/iocBoot/iocpoeAdc 20200 ./SIA-CalSys.cmd
 
 StandardOutput=syslog
 StandardError=syslog
