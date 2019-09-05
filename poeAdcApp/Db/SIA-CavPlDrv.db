@@ -14,6 +14,11 @@ record(waveform, "SIA-CavPlDrv:ADC0:Data-Mon"){
     field(FTVL, "DOUBLE")
     field(NELM, "4")
 }
+record(calc, "SIA-CavPlDrv:ADC0:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "SIA-CavPlDrv:ADC0:Data-Mon.STAT CP")
+   field(INPB, "SIA-CavPlDrv:ADC0:Data-Mon CP")
+}
 record(waveform, "SIA-CavPlDrv:ADC1:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC1 Data")
@@ -22,6 +27,11 @@ record(waveform, "SIA-CavPlDrv:ADC1:Data-Mon"){
     field(INP,  "@ADC.proto getData(ADC1) $(PORT) $(A)")
     field(FTVL, "DOUBLE")
     field(NELM, "4")
+}
+record(calc, "SIA-CavPlDrv:ADC1:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.STAT CP")
+   field(INPB, "SIA-CavPlDrv:ADC1:Data-Mon CP")
 }
 record(waveform, "SIA-CavPlDrv:ADC2:Data-Mon"){
     field(PINI, "YES")
@@ -32,6 +42,11 @@ record(waveform, "SIA-CavPlDrv:ADC2:Data-Mon"){
     field(FTVL, "DOUBLE")
     field(NELM, "4")
 }
+record(calc, "SIA-CavPlDrv:ADC2:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.STAT CP")
+   field(INPB, "SIA-CavPlDrv:ADC2:Data-Mon CP")
+}
 record(waveform, "SIA-CavPlDrv:ADC3:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC3 Data")
@@ -41,12 +56,20 @@ record(waveform, "SIA-CavPlDrv:ADC3:Data-Mon"){
     field(FTVL, "DOUBLE")
     field(NELM, "4")
 }
+record(calc, "SIA-CavPlDrv:ADC3:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "SIA-CavPlDrv:ADC3:Data-Mon.STAT CP")
+   field(INPB, "SIA-CavPlDrv:ADC3:Data-Mon CP")
+}
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon"){
     field(CALC, "(5.*A/4095.)*(1.)")
     field(INPA, "SIA-CavPlDrv:ADC0:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC0:Data-Mon_enbl")
 }
 
 # ((ADC0[1] - 0.5) / 0.4)
@@ -55,6 +78,9 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:Current5V-Mon"){
     field(INPA, "SIA-CavPlDrv:ADC0:Data-Mon.VAL[1] CP MSS")
     field(PREC, "3")
     field(EGU,  "A")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC0:Data-Mon_enbl")
 }
 
 
@@ -63,6 +89,9 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon"){
     field(INPA, "SIA-CavPlDrv:ADC0:Data-Mon.VAL[2] CP MSS")
     field(EGU, "V")
     field(DESC, "")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC0:Data-Mon_enbl")
 }
 
 # ((ADC1[0] - 0.5) / 0.4)
@@ -71,38 +100,54 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon"){
     field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.VAL[0] CP MSS")
     field(PREC, "3")
     field(EGU,  "A")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC1:Data-Mon_enbl")
 }
 
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Sts_CALC"){
     field(CALC, "(A>2.5)?1:0")
     field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.VAL[1] CP MSS")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC1:Data-Mon_enbl")
 }
 record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Sts"){
     field(DTYP, "Raw Soft Channel")
     field(INP,  "RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Sts_CALC CP MSS")
     field(ZNAM, "Enable")
     field(ONAM, "Disable")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC1:Data-Mon_enbl")
 }
-
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon_CALC"){
     field(CALC, "(A>2.5)?1:0")
     field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.VAL[2] CP MSS")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC1:Data-Mon_enbl")
 }
 record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon"){
     field(DTYP, "Raw Soft Channel")
     field(INP,  "RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon_CALC CP MSS")
     field(ZNAM, "Fail")
     field(ONAM, "Normal")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC1:Data-Mon_enbl")
 }
-
 
 record(calc, "SI-03SP:RF-P5Cav:Pl1Pos-Mon"){
     field(CALC, "(5.*A/4095.)*(1.)")
     field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
     field(DESC, "")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC1:Data-Mon_enbl")
 }
 
 # ((ADC2[0] - 0.5) / 0.4)
@@ -111,36 +156,52 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon"){
     field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.VAL[0] CP MSS")
     field(PREC, "3")
     field(EGU,  "A")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC2:Data-Mon_enbl")
 }
 
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Sts_CALC"){
     field(CALC, "(A>2.5)?1:0")
     field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.VAL[1] CP MSS")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC2:Data-Mon_enbl")
 }
 record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Sts"){
     field(DTYP, "Raw Soft Channel")
     field(INP,  "RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Sts_CALC CP MSS")
     field(ZNAM, "Enable")
     field(ONAM, "Disable")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC2:Data-Mon_enbl")
 }
-
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon_CALC"){
     field(CALC, "(A>2.5)?1:0")
     field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.VAL[2] CP MSS")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC2:Data-Mon_enbl")
 }
 record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon"){
     field(DTYP, "Raw Soft Channel")
     field(INP,  "RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon_CALC CP MSS")
     field(ZNAM, "Fail")
     field(ONAM, "Normal")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC2:Data-Mon_enbl")
 }
-
 
 record(calc, "SI-03SP:RF-P5Cav:Pl2Pos-Mon"){
     field(CALC, "(5.*A/4095.)*(1.)")
     field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
     field(DESC, "")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SIA-CavPlDrv:ADC2:Data-Mon_enbl")
 }
