@@ -98,7 +98,7 @@ record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon"){
 }
 
 
-record(calc, "SI-03SP:RF-P5Cav:Pl1Pos-Mon"){
+record(calc, "SI-03SP:RF-P7Cav:Pl1Pos-Mon"){
     field(CALC, "(5.*A/4095.)*(1.)")
     field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
@@ -138,7 +138,7 @@ record(bi, "RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon"){
 }
 
 
-record(calc, "SI-03SP:RF-P5Cav:Pl2Pos-Mon"){
+record(calc, "SI-03SP:RF-P7Cav:Pl2Pos-Mon"){
     field(CALC, "(5.*A/4095.)*(1.)")
     field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
