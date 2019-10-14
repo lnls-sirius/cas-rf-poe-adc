@@ -199,18 +199,18 @@ dbs = [
     ]},
     {'ioc':'SIA-CavPlDrv',
         'readings' : [
-        {'ADC':'0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:VoltPos5V-Mon',  'template':voltage},
-        {'ADC':'0', 'CH':'1', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:Current5V-Mon',  'template':current},
-        {'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:VoltPos48V-Mon', 'template':voltage, 'CTE':res(90.9,10.)},
+        {'ADC':'0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon',  'template':voltage},
+        {'ADC':'0', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Current5V-Mon',  'template':current},
+        {'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon', 'template':voltage, 'CTE':res(90.9,10.)},
 
-        {'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:Dr1Current-Mon', 'template':current},
-        {'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:Dr1Enbl-Mon',    'template':bi,  'ZNAM':'Enable', 'ONAM':'Disable'},
-        {'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:Dr1Flt-Mon',     'template':bi,  'ZNAM':'Fail',   'ONAM':'Normal'},
+        {'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon', 'template':current},
+        {'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Mon',    'template':bi,  'ZNAM':'Enable', 'ONAM':'Disable'},
+        {'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon',     'template':bi,  'ZNAM':'Fail',   'ONAM':'Normal'},
         {'ADC':'1', 'CH':'3', 'NAME':'SI-03SP:RF-P7Cav:Pl1Pos-Mon',               'template':voltage},
 
-        {'ADC':'2', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:Dr2Current-Mon', 'template':current},
-        {'ADC':'2', 'CH':'1', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:Dr2Enbl-Mon',    'template':bi, 'ZNAM':'Enable', 'ONAM':'Disable'},
-        {'ADC':'2', 'CH':'2', 'NAME':'RA-RaSIA01:RF-LLRFPlDrivers:Dr2Flt-Mon',     'template':bi, 'ZNAM':'Fail',   'ONAM':'Normal'},
+        {'ADC':'2', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon', 'template':current},
+        {'ADC':'2', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Mon',    'template':bi, 'ZNAM':'Enable', 'ONAM':'Disable'},
+        {'ADC':'2', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon',     'template':bi, 'ZNAM':'Fail',   'ONAM':'Normal'},
         {'ADC':'2', 'CH':'3', 'NAME':'SI-03SP:RF-P7Cav:Pl2Pos-Mon',               'template':voltage},
     ]},
 ]
