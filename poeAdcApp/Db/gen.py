@@ -206,12 +206,12 @@ dbs = [
         {'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon', 'template':current},
         {'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Mon',    'template':bi,  'ZNAM':'Enable', 'ONAM':'Disable'},
         {'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon',     'template':bi,  'ZNAM':'Fail',   'ONAM':'Normal'},
-        {'ADC':'1', 'CH':'3', 'NAME':'SI-03SP:RF-P7Cav:Pl1Pos-Mon',               'template':voltage},
+        {'ADC':'1', 'CH':'3', 'NAME':'SI-02SB:RF-P7Cav:Pl1Pos-Mon',               'template':voltage},
 
         {'ADC':'2', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon', 'template':current},
         {'ADC':'2', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Mon',    'template':bi, 'ZNAM':'Enable', 'ONAM':'Disable'},
         {'ADC':'2', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon',     'template':bi, 'ZNAM':'Fail',   'ONAM':'Normal'},
-        {'ADC':'2', 'CH':'3', 'NAME':'SI-03SP:RF-P7Cav:Pl2Pos-Mon',               'template':voltage},
+        {'ADC':'2', 'CH':'3', 'NAME':'SI-02SB:RF-P7Cav:Pl2Pos-Mon',               'template':voltage},
     ]},
 ]
 

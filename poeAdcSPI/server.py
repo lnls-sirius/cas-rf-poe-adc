@@ -66,13 +66,13 @@ class Comm():
             while True:
                 command = connection.recv(1024).decode('utf-8')
                 if command   == 'ADC0:DATA?':
-                    response = str(self.ADC0.read(self.chs))
+                    response = str(self.ADC0.mean(self.chs))
                 elif command == 'ADC1:DATA?':
-                    response = str(self.ADC1.read(self.chs))
+                    response = str(self.ADC1.mean(self.chs))
                 elif command == 'ADC2:DATA?':
-                    response = str(self.ADC2.read(self.chs))
+                    response = str(self.ADC2.mean(self.chs))
                 elif command == 'ADC3:DATA?':
-                    response = str(self.ADC3.read(self.chs))
+                    response = str(self.ADC3.mean(self.chs))
                 else:
                     response = ResponseType.UNSUPPORTED_COMMAND
 

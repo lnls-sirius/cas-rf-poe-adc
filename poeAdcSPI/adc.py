@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+import numpy as np
 import Adafruit_BBIO.GPIO as GPIO
 
 class ADC:
@@ -26,7 +27,12 @@ class ADC:
     def __str__(self):
         return "ADC localizado porta: " + self.port
         
-        
+    def mean(self, channels, count=10):
+        readings_ = [a for a in range(10)]
+        for c in range(count):
+            readings_[c] = self.read(channels)
+        return list(np.mean(readings_, axis=0))
+
     def read(self,channels):
         " Retorna valor medido pelo ADC (Valor de 0 4095) "
         saida = []
