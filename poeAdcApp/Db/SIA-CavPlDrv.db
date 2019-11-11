@@ -63,7 +63,7 @@ record(calc, "SIA-CavPlDrv:ADC3:Data-Mon_enbl"){
 }
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon"){
-    field(CALC, "(5.*A/4095.)*(1.)")
+    field(CALC, "(5.*A/4095.)*(2.)")
     field(INPA, "SIA-CavPlDrv:ADC0:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "")
@@ -119,7 +119,7 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon"){
 }
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Mon_CALC"){
-    field(CALC, "(A>2.5)?1:0")
+    field(CALC, "(A>1000)?1:0")
     field(INPA, "SIA-CavPlDrv:ADC1:Data-Mon.VAL[1] CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -181,7 +181,7 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon"){
 }
 
 record(calc, "RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Mon_CALC"){
-    field(CALC, "(A>2.5)?1:0")
+    field(CALC, "(A>1000)?1:0")
     field(INPA, "SIA-CavPlDrv:ADC2:Data-Mon.VAL[1] CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
