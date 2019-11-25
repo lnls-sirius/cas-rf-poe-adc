@@ -115,6 +115,7 @@ record(calc, "${NAME}"){
     field(DESC, "${DESC}")
     field(DISV, "1")
     field(DISS, "INVALID")
+    field(PREC, "${PREC}")
     field(SDIS, "${ioc}:ADC${ADC}:Data-Mon_enbl")
 }
 ''')
@@ -190,7 +191,7 @@ record(bi, "${NAME}"){
 def res(R, R_):
     return str(((R_+R)/R_))
 
-defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB'}
+defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB', 'PREC':'2'}
 
 dbs = [
     {'ioc':'SIA-CalSys',
