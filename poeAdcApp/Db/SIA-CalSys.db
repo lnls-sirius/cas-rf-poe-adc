@@ -76,7 +76,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys1_ADC"){
     field(SDIS, "SIA-CalSys:ADC0:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm1_CALC"){
-    field(CALC, "-3.206*(F**4) + 18.54*(F**3) + -39.65*(F**2) + -3.095*F + 29.116")
+    field(CALC, "0.2512*(F**4) + -3.75*(F**3) + 11.04*(F**2) + -51.47*F + 45.68")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys1_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -116,7 +116,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys2_ADC"){
     field(SDIS, "SIA-CalSys:ADC0:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm2_CALC"){
-    field(CALC, "-3.992*(F**4) + 23.072*(F**3) + -49.126*(F**2) + 5.203*F + 26.876")
+    field(CALC, "0.149*(F**4) + -3.742*(F**3) + 12.17*(F**2) + -53.66*F + 47.09")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys2_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -156,7 +156,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys3_ADC"){
     field(SDIS, "SIA-CalSys:ADC0:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm3_CALC"){
-    field(CALC, "-6.512*(F**4) + 34.972*(F**3) + -69.744*(F**2) + 20.909*F + 22.184")
+    field(CALC, "-0.4482*(F**4) + -0.5061*(F**3) + 5.411*(F**2) + -47.16*F + 44.51")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys3_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -196,7 +196,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys4_ADC"){
     field(SDIS, "SIA-CalSys:ADC0:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm4_CALC"){
-    field(CALC, "-6.149*(F**4) + 33.235*(F**3) + -66.664*(F**2) + 18.82*F + 22.538")
+    field(CALC, "0.1856*(F**4) + -3.278*(F**3) + 9.92*(F**2) + -50.15*F + 45.09")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys4_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -236,7 +236,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys5_ADC"){
     field(SDIS, "SIA-CalSys:ADC1:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm5_CALC"){
-    field(CALC, "-5.613*(F**4) + 30.417*(F**3) + -61.09*(F**2) + 13.27*F + 24.99")
+    field(CALC, "0.06204*(F**4) + -3.055*(F**3) + 10.21*(F**2) + -51.47*F + 46.16")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys5_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -276,7 +276,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys6_ADC"){
     field(SDIS, "SIA-CalSys:ADC1:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm6_CALC"){
-    field(CALC, "-3.442*(F**4) + 20.42*(F**3) + -44.495*(F**2) + 1.924*F + 27.533")
+    field(CALC, "-0.1082*(F**4) + -1.979*(F**3) + 7.966*(F**2) + -49.24*F + 45.19")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys6_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -316,7 +316,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys7_ADC"){
     field(SDIS, "SIA-CalSys:ADC1:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm7_CALC"){
-    field(CALC, "-1.436*(F**4) + 9.253*(F**3) + -21.957*(F**2) + -17.936*F + 34.342")
+    field(CALC, "0.3741*(F**4) + -4.903*(F**3) + 14.07*(F**2) + -54.86*F + 47.47")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys7_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -356,7 +356,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys8_ADC"){
     field(SDIS, "SIA-CalSys:ADC1:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm8_CALC"){
-    field(CALC, "-6.257*(F**4) + 34.1*(F**3) + -68.444*(F**2) + 19.331*F + 22.783")
+    field(CALC, "-0.3443*(F**4) + -1.292*(F**3) + 7.643*(F**2) + -50.17*F + 45.49")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys8_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -396,7 +396,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys9_ADC"){
     field(SDIS, "SIA-CalSys:ADC2:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm9_CALC"){
-    field(CALC, "-3.668*(F**4) + 21.841*(F**3) + -47.688*(F**2) + 4.694*F + 26.832")
+    field(CALC, "0.2122*(F**4) + -3.335*(F**3) + 9.681*(F**2) + -50.03*F + 45.24")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys9_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -436,7 +436,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys10_ADC"){
     field(SDIS, "SIA-CalSys:ADC2:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm10_CALC"){
-    field(CALC, "-4.461*(F**4) + 26.237*(F**3) + -56.37*(F**2) + 11.883*F + 24.713")
+    field(CALC, "-0.7763*(F**4) + 1.47*(F**3) + 1.543*(F**2) + -44.51*F + 44.04")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys10_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -476,7 +476,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys11_ADC"){
     field(SDIS, "SIA-CalSys:ADC2:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm11_CALC"){
-    field(CALC, "-4.373*(F**4) + 25.007*(F**3) + -52.92*(F**2) + 8.76*F + 25.415")
+    field(CALC, "0.1688*(F**4) + -3.015*(F**3) + 8.901*(F**2) + -48.98*F + 44.59")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys11_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -516,7 +516,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys12_ADC"){
     field(SDIS, "SIA-CalSys:ADC2:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm12_CALC"){
-    field(CALC, "-4.445*(F**4) + 24.713*(F**3) + -51.043*(F**2) + 5.52*F + 27.327")
+    field(CALC, "-0.213*(F**4) + -1.859*(F**3) + 8.205*(F**2) + -50.12*F + 45.84")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys12_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -556,7 +556,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys13_ADC"){
     field(SDIS, "SIA-CalSys:ADC3:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm13_CALC"){
-    field(CALC, "-3.056*(F**4) + 18.042*(F**3) + -38.988*(F**2) + -3.983*F + 29.751")
+    field(CALC, "-0.3468*(F**4) + -1.227*(F**3) + 7.374*(F**2) + -49.76*F + 45.6")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys13_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -596,7 +596,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys14_ADC"){
     field(SDIS, "SIA-CalSys:ADC3:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm14_CALC"){
-    field(CALC, "-5.717*(F**4) + 30.92*(F**3) + -61.937*(F**2) + 14.281*F + 24.412")
+    field(CALC, "0.09841*(F**4) + -3.509*(F**3) + 11.62*(F**2) + -52.73*F + 46.36")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys14_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -636,7 +636,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys15_ADC"){
     field(SDIS, "SIA-CalSys:ADC3:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm15_CALC"){
-    field(CALC, "-5.1*(F**4) + 29.655*(F**3) + -62.996*(F**2) + 17.496*F + 22.99")
+    field(CALC, "-0.2635*(F**4) + -0.8597*(F**3) + 5.384*(F**2) + -47.16*F + 44.82")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys15_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -676,7 +676,7 @@ record(calc, "RA-RaSIA01:RF-LLRFCalSys16_ADC"){
     field(SDIS, "SIA-CalSys:ADC3:Data-Mon_enbl")
 }
 record(calc, "RA-RaSIA01:RF-LLRFCalSys:PwrdBm16_CALC"){
-    field(CALC, "-4.948*(F**4) + 27.166*(F**3) + -55.089*(F**2) + 8.583*F + 26.103")
+    field(CALC, "0.4268*(F**4) + -4.361*(F**3) + 11.61*(F**2) + -51.55*F + 45.6")
     field(INPF, "RA-RaSIA01:RF-LLRFCalSys16_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
