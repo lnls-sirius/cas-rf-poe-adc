@@ -101,12 +101,13 @@ record(calc,"RA-RaSIA01:RF-LLRFSwPS:CurrentPos5V-Mon_raw"){
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "LLRFSwPS02:ADC1:Data-Mon_enbl")
+    field(PREC, "4")
 }
 # ((ADC1[0] - 0.5) / 0.4)
 record(calc, "RA-RaSIA01:RF-LLRFSwPS:CurrentPos5V-Mon"){
     field(CALC, "((A - 0.5)/0.4)")
     field(INPA, "RA-RaSIA01:RF-LLRFSwPS:CurrentPos5V-Mon_raw CP MSS")
-    field(PREC, "3")
+    field(PREC, "4")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -119,12 +120,13 @@ record(calc,"RA-RaSIA01:RF-LLRFSwPS:CurrentPos24V-Mon_raw"){
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "LLRFSwPS02:ADC1:Data-Mon_enbl")
+    field(PREC, "4")
 }
 # ((ADC1[1] - 0.5) / 0.4)
 record(calc, "RA-RaSIA01:RF-LLRFSwPS:CurrentPos24V-Mon"){
     field(CALC, "((A - 0.5)/0.4)")
     field(INPA, "RA-RaSIA01:RF-LLRFSwPS:CurrentPos24V-Mon_raw CP MSS")
-    field(PREC, "3")
+    field(PREC, "4")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")

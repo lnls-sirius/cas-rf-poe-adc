@@ -146,12 +146,13 @@ record(calc,"${NAME}_raw"){
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "${ioc}:ADC${ADC}:Data-Mon_enbl")
+    field(PREC, "${PREC}")
 }
 # ((ADC${ADC}[$CH] - 0.5) / 0.4)
 record(calc, "${NAME}"){
     field(CALC, "((A - 0.5)/0.4)")
     field(INPA, "${NAME}_raw CP MSS")
-    field(PREC, "3")
+    field(PREC, "${PREC}")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")
