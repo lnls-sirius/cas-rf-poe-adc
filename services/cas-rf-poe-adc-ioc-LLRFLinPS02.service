@@ -14,7 +14,7 @@ Type=simple
 WorkingDirectory=/opt/cas-rf-poe-adc/iocBoot/iocpoeAdc/
 ExecStartPre=/bin/sleep 50
 ExecStart=/usr/local/bin/procServ -f --allow -L - \
-    --chdir /opt/cas-rf-poe-adc/iocBoot/iocpoeAdc 20200 ./SIA-CavPlDrv.cmd
+    --chdir /opt/cas-rf-poe-adc/iocBoot/iocpoeAdc 20200 ./LLRFLinPS02.cmd
 
 StandardOutput=syslog
 StandardError=syslog
