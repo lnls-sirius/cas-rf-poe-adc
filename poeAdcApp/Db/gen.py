@@ -78,13 +78,21 @@ record(calc, "${NAME}${N}_ADC"){
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "${ioc}:ADC${ADC}:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "${NAME}${N}_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "${ioc}:ADC${ADC}:Data-Mon_enbl CP")
+   field(INPB, "${NAME}${N}_ADC.STAT CP")
+   field(INPC, "${NAME}${N}_ADC CP")
 }
 record(calc, "${NAME}:${dBm}${N}_CALC"){
     field(CALC, "${p5}*(F**4) + ${p4}*(F**3) + ${p3}*(F**2) + ${p2}*F + ${p1}")
     field(INPF, "${NAME}${N}_ADC CP MSS")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "${ioc}:ADC${ADC}:Data-Mon_enbl")
+    field(SDIS, "${NAME}${N}_enbl")
 }
 record(calc, "${NAME}:${dBm}${N}-Mon"){
     field(CALC, "(A>${MIN})?(A + B):(-Inf)")
@@ -94,7 +102,7 @@ record(calc, "${NAME}:${dBm}${N}-Mon"){
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "${ioc}:ADC${ADC}:Data-Mon_enbl")
+    field(SDIS, "${NAME}${N}_enbl")
 }
 record(calc, "${NAME}:${W}${N}-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
@@ -103,7 +111,7 @@ record(calc, "${NAME}:${W}${N}-Mon"){
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "${ioc}:ADC${ADC}:Data-Mon_enbl")
+    field(SDIS, "${NAME}${N}_enbl")
 }
 ''')
 
@@ -115,6 +123,7 @@ record(calc, "${NAME}"){
     field(DESC, "${DESC}")
     field(DISV, "1")
     field(DISS, "INVALID")
+    field(PREC, "${PREC}")
     field(SDIS, "${ioc}:ADC${ADC}:Data-Mon_enbl")
 }
 ''')
@@ -190,47 +199,260 @@ record(bi, "${NAME}"){
 def res(R, R_):
     return str(((R_+R)/R_))
 
-defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB'}
+defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB', 'PREC':'4'}
 
 dbs = [
     {'ioc':'SIA-CalSys',
     'readings' : [
-        {'ADC':'0', 'CH':'0', 'N':'1',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'29.116', 'p2':'-3.095', 'p3':'-39.65', 'p4':'18.54', 'p5':'-3.206'},
-        {'ADC':'0', 'CH':'1', 'N':'2',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'26.876', 'p2':'5.203', 'p3':'-49.126', 'p4':'23.072', 'p5':'-3.992'},
-        {'ADC':'0', 'CH':'2', 'N':'3',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'22.184', 'p2':'20.909', 'p3':'-69.744', 'p4':'34.972', 'p5':'-6.512'},
-        {'ADC':'0', 'CH':'3', 'N':'4',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'22.538', 'p2':'18.82', 'p3':'-66.664', 'p4':'33.235', 'p5':'-6.149'},
+        {'ADC':'0', 'CH':'0', 'N':'1',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.68', 'p2':'-51.47', 'p3':'11.04', 'p4':'-3.75', 'p5':'0.2512'},
+        {'ADC':'0', 'CH':'1', 'N':'2',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'47.09', 'p2':'-53.66', 'p3':'12.17', 'p4':'-3.742', 'p5':'0.149'},
+        {'ADC':'0', 'CH':'2', 'N':'3',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'44.51', 'p2':'-47.16', 'p3':'5.411', 'p4':'-0.5061', 'p5':'-0.4482'},
+        {'ADC':'0', 'CH':'3', 'N':'4',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.09', 'p2':'-50.15', 'p3':'9.92', 'p4':'-3.278', 'p5':'0.1856'},
 
-        {'ADC':'1', 'CH':'0', 'N':'5',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'24.99', 'p2':'13.27', 'p3':'-61.09', 'p4':'30.417', 'p5':'-5.613'},
-        {'ADC':'1', 'CH':'1', 'N':'6',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'27.533', 'p2':'1.924', 'p3':'-44.495', 'p4':'20.42', 'p5':'-3.442'},
-        {'ADC':'1', 'CH':'2', 'N':'7',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'34.342', 'p2':'-17.936', 'p3':'-21.957', 'p4':'9.253', 'p5':'-1.436'},
-        {'ADC':'1', 'CH':'3', 'N':'8',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'22.783', 'p2':'19.331', 'p3':'-68.444', 'p4':'34.1', 'p5':'-6.257'},
+        {'ADC':'1', 'CH':'0', 'N':'5',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'46.16', 'p2':'-51.47', 'p3':'10.21', 'p4':'-3.055', 'p5':'0.06204'},
+        {'ADC':'1', 'CH':'1', 'N':'6',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.19', 'p2':'-49.24', 'p3':'7.966', 'p4':'-1.979', 'p5':'-0.1082'},
+        {'ADC':'1', 'CH':'2', 'N':'7',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'47.47', 'p2':'-54.86', 'p3':'14.07', 'p4':'-4.903', 'p5':'0.3741'},
+        {'ADC':'1', 'CH':'3', 'N':'8',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.49', 'p2':'-50.17', 'p3':'7.643', 'p4':'-1.292', 'p5':'-0.3443'},
 
-        {'ADC':'2', 'CH':'0', 'N':'9',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'26.832', 'p2':'4.694', 'p3':'-47.688', 'p4':'21.841', 'p5':'-3.668'},
-        {'ADC':'2', 'CH':'1', 'N':'10', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'24.713', 'p2':'11.883', 'p3':'-56.37', 'p4':'26.237', 'p5':'-4.461'},
-        {'ADC':'2', 'CH':'2', 'N':'11', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'25.415', 'p2':'8.76', 'p3':'-52.92', 'p4':'25.007', 'p5':'-4.373'},
-        {'ADC':'2', 'CH':'3', 'N':'12', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'27.327', 'p2':'5.52', 'p3':'-51.043', 'p4':'24.713', 'p5':'-4.445'},
+        {'ADC':'2', 'CH':'0', 'N':'9',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.24', 'p2':'-50.03', 'p3':'9.681', 'p4':'-3.335', 'p5':'0.2122'},
+        {'ADC':'2', 'CH':'1', 'N':'10', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'44.04', 'p2':'-44.51', 'p3':'1.543', 'p4':'1.47', 'p5':'-0.7763'},
+        {'ADC':'2', 'CH':'2', 'N':'11', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'44.59', 'p2':'-48.98', 'p3':'8.901', 'p4':'-3.015', 'p5':'0.1688'},
+        {'ADC':'2', 'CH':'3', 'N':'12', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.84', 'p2':'-50.12', 'p3':'8.205', 'p4':'-1.859', 'p5':'-0.213'},
 
-        {'ADC':'3', 'CH':'0', 'N':'13', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'29.751', 'p2':'-3.983', 'p3':'-38.988', 'p4':'18.042', 'p5':'-3.056'},
-        {'ADC':'3', 'CH':'1', 'N':'14', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'24.412', 'p2':'14.281', 'p3':'-61.937', 'p4':'30.92', 'p5':'-5.717'},
-        {'ADC':'3', 'CH':'2', 'N':'15', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'22.99', 'p2':'17.496', 'p3':'-62.996', 'p4':'29.655', 'p5':'-5.1'},
-        {'ADC':'3', 'CH':'3', 'N':'16', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'26.103', 'p2':'8.583', 'p3':'-55.089', 'p4':'27.166', 'p5':'-4.948'},
+        {'ADC':'3', 'CH':'0', 'N':'13', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.6', 'p2':'-49.76', 'p3':'7.374', 'p4':'-1.227', 'p5':'-0.3468'},
+        {'ADC':'3', 'CH':'1', 'N':'14', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'46.36', 'p2':'-52.73', 'p3':'11.62', 'p4':'-3.509', 'p5':'0.09841'},
+        {'ADC':'3', 'CH':'2', 'N':'15', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'44.82', 'p2':'-47.16', 'p3':'5.384', 'p4':'-0.8597', 'p5':'-0.2635'},
+        {'ADC':'3', 'CH':'3', 'N':'16', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.6', 'p2':'-51.55', 'p3':'11.61', 'p4':'-4.361', 'p5':'0.4268'},
     ]},
     {'ioc':'SIA-CavPlDrv',
-        'readings' : [
-            {'ADC':'0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon',  'template':voltage, 'CTE':'2.'},
-        {'ADC':'0', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Current5V-Mon',  'template':current},
-        {'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon', 'template':voltage, 'CTE':res(90.9,10.)},
+         'readings': [
+             {'ADC': '0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon', 'template':voltage, 'CTE':'2.'},
+             {'ADC':'0', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Current5V-Mon',  'template':current},
+             {'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon', 'template':voltage, 'CTE':res(90.9,10.)},
 
-        {'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon', 'template':current},
-        {'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Mon',    'template':bi_2,  'ZNAM':'Enable', 'ONAM':'Disable'},
-        {'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon',     'template':bi,  'ZNAM':'Fail',   'ONAM':'Normal'},
-        {'ADC':'1', 'CH':'3', 'NAME':'SI-02SB:RF-P7Cav:Pl1Pos-Mon',               'template':voltage},
+             {'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Current-Mon', 'template':current},
+             {'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Enbl-Mon',    'template':bi_2,
+                'ZNAM':'Enable','ONAM':'Disable'},
+             {'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr1Flt-Mon',     'template':bi,
+                'ZNAM':'Fail',  'ONAM':'Normal'},
+             {'ADC':'1', 'CH':'3', 'NAME':'SI-02SB:RF-P7Cav:Pl1Pos-Mon',               'template':voltage},
 
-        {'ADC':'2', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon', 'template':current},
-        {'ADC':'2', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Mon',    'template':bi_2, 'ZNAM':'Enable', 'ONAM':'Disable'},
-        {'ADC':'2', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon',     'template':bi, 'ZNAM':'Fail',   'ONAM':'Normal'},
-        {'ADC':'2', 'CH':'3', 'NAME':'SI-02SB:RF-P7Cav:Pl2Pos-Mon',               'template':voltage},
-    ]},
+             {'ADC':'2', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Current-Mon', 'template':current},
+             {'ADC':'2', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Enbl-Mon',    'template':bi_2,
+                'ZNAM':'Enable', 'ONAM':'Disable'},
+             {'ADC':'2', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Dr2Flt-Mon',     'template':bi,
+                'ZNAM':'Fail', 'ONAM':'Normal'},
+             {'ADC':'2', 'CH':'3', 'NAME':'SI-02SB:RF-P7Cav:Pl2Pos-Mon',               'template':voltage},
+         ]
+     },
+    {
+        'ioc':'LLRFLinPS01',
+        'readings': [
+            {
+                'ADC':'0', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
+                'DESC': 'Tensão de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltNeg5V-Mon',  'template':voltage, 'CTE':res(-10,20),
+                'DESC': 'Tensão de saída da fonte de -5 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon', 'template':voltage, 'CTE':res(20,10),
+                'DESC': 'Tensão de saída da fonte de 12 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'3', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltPos3V3-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+            },
+
+            {
+                'ADC':'1', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon',  'template':current, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de -5 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de 12 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'3', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Corrent de saída da fonte de 3.3 Volts'
+            },
+        ]
+    },
+    {
+        'ioc':'LLRFLinPS02',
+        'readings': [
+            {
+                'ADC':'0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
+                'DESC': 'Tensão de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'1', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltNeg5V-Mon',  'template':voltage, 'CTE':res(10,20),
+                'DESC': 'Tensão de saída da fonte de -5 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltPos12V-Mon', 'template':voltage, 'CTE':res(20,10),
+                'DESC': 'Tensão de saída da fonte de 12 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'3', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltPos3V3-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+            },
+
+            {
+                'ADC':'1', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon',  'template':current, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de -5 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de 12 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'3', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+            },
+        ]
+    },
+    {
+        'ioc':'LLRFSwPS01',
+        'readings': [
+            {
+                'ADC':'0', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFSwPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
+                'DESC': 'Tensão de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFSwPS:VoltPos24V-Mon',  'template':voltage, 'CTE':res(49.9,10),
+                'DESC': 'Tensão de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC':'0', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFSwPS:VoltPos3V3-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+            },
+
+            {
+                'ADC':'1', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFSwPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
+                    'DESC': 'Corrente de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFSwPS:CurrentPos24V-Mon',  'template':current, 'CTE':'1',
+                    'DESC': 'Corrente de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC':'1', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFSwPS:CurrentPos3V3-Mon', 'template':voltage, 'CTE':'1',
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+            },
+        ]
+    },
+    {
+        'ioc': 'LLRFSwPS02',
+        'readings': [
+            {
+                'ADC': '0', 'CH': '0', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:VoltPos5V-Mon', 'template': voltage,
+                'CTE': res(10, 20),
+                'DESC': 'Tensão de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '1', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:VoltPos24V-Mon', 'template': voltage,
+                'CTE': res(49.9, 10),
+                'DESC': 'Tensão de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '2', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:VoltPos3V3-Mon', 'template': voltage, 'CTE': '1',
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+            },
+            {
+                'ADC': '1', 'CH': '0', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:CurrentPos5V-Mon', 'template': current, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC': '1', 'CH': '1', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:CurrentPos24V-Mon', 'template': current, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC': '1', 'CH': '2', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:CurrentPos3V3-Mon', 'template': voltage, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+            },
+        ]
+    },
+    {
+        'ioc': 'SSASwPS01',
+        'readings': [
+            {
+                'ADC': '0', 'CH': '0', 'NAME': 'RA-RaBO02:RF-SSASwPS:VoltPos5V-Mon', 'template': voltage,
+                'CTE': res(10, 20),
+                'DESC': 'Tensão de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '1', 'NAME': 'RA-RaBO02:RF-SSASwPS:VoltPos12V-Mon', 'template': voltage,
+                'CTE': res(20, 10),
+                'DESC': 'Tensão de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '2', 'NAME': 'RA-RaBO02:RF-SSASwPS:VoltNeg12V-Mon', 'template': voltage, 'CTE': res(20, 10),
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '3', 'NAME': 'RA-RaBO02:RF-SSASwPS:SSAOn-Mon', 'template': voltage, 'CTE': '1',
+                'DESC': 'Monitoramento Liga Módulos'
+            },
+            {
+                'ADC': '1', 'CH': '0', 'NAME': 'RA-RaBO02:RF-SSASwPS:CurrentPos5V-Mon', 'template': current, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC': '1', 'CH': '1', 'NAME': 'RA-RaBO02:RF-SSASwPS:CurrentPos12V-Mon', 'template': current, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC': '1', 'CH': '2', 'NAME': 'RA-RaBO02:RF-SSASwPS:CurrentNeg12V-Mon', 'template': voltage, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+            },
+        ]
+    },
+    {
+        'ioc': 'SSASwPS02',
+        'readings': [
+            {
+                'ADC': '0', 'CH': '0', 'NAME': 'RA-RaSIA02:RF-SSASwPS:VoltPos5V-Mon', 'template': voltage,
+                'CTE': res(10, 20),
+                'DESC': 'Tensão de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '1', 'NAME': 'RA-RaSIA02:RF-SSASwPS:VoltPos12V-Mon', 'template': voltage,
+                'CTE': res(20, 10),
+                'DESC': 'Tensão de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '2', 'NAME': 'RA-RaSIA02:RF-SSASwPS:VoltNeg12V-Mon', 'template': voltage, 'CTE': res(20, 10),
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+            },
+            {
+                'ADC': '0', 'CH': '3', 'NAME': 'RA-RaSIA02:RF-SSASwPS:SSAOn-Mon', 'template': voltage, 'CTE': '1',
+                'DESC': 'Monitoramento Liga Módulos'
+            },
+            {
+                'ADC': '1', 'CH': '0', 'NAME': 'RA-RaSIA02:RF-SSASwPS:CurrentPos5V-Mon', 'template': current, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 5 Volts'
+            },
+            {
+                'ADC': '1', 'CH': '1', 'NAME': 'RA-RaSIA02:RF-SSASwPS:CurrentPos12V-Mon', 'template': current, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 24 Volts'
+            },
+            {
+                'ADC': '1', 'CH': '2', 'NAME': 'RA-RaSIA02:RF-SSASwPS:CurrentNeg12V-Mon', 'template': voltage, 'CTE': '1',
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+            },
+        ]
+    },
+
 ]
 
 if __name__ == '__main__':

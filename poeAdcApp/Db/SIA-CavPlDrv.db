@@ -69,6 +69,7 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon"){
     field(DESC, "")
     field(DISV, "1")
     field(DISS, "INVALID")
+    field(PREC, "4")
     field(SDIS, "SIA-CavPlDrv:ADC0:Data-Mon_enbl")
 }
 
@@ -97,6 +98,7 @@ record(calc, "RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon"){
     field(DESC, "")
     field(DISV, "1")
     field(DISS, "INVALID")
+    field(PREC, "4")
     field(SDIS, "SIA-CavPlDrv:ADC0:Data-Mon_enbl")
 }
 
@@ -159,6 +161,7 @@ record(calc, "SI-02SB:RF-P7Cav:Pl1Pos-Mon"){
     field(DESC, "")
     field(DISV, "1")
     field(DISS, "INVALID")
+    field(PREC, "4")
     field(SDIS, "SIA-CavPlDrv:ADC1:Data-Mon_enbl")
 }
 
@@ -221,5 +224,6 @@ record(calc, "SI-02SB:RF-P7Cav:Pl2Pos-Mon"){
     field(DESC, "")
     field(DISV, "1")
     field(DISS, "INVALID")
+    field(PREC, "4")
     field(SDIS, "SIA-CavPlDrv:ADC2:Data-Mon_enbl")
 }
