@@ -305,19 +305,19 @@ dbs = [
             },
 
             {
-                'ADC':'1', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
+                'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
                 'DESC': 'Corrente de saída da fonte de 5 Volts'
             },
             {
-                'ADC':'1', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon',  'template':current, 'CTE':'1',
+                'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentNeg5V-Mon',  'template':current, 'CTE':'1',
                 'DESC': 'Corrente de saída da fonte de -5 Volts'
             },
             {
-                'ADC':'1', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon', 'template':current, 'CTE':'1',
+                'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentPos12V-Mon', 'template':current, 'CTE':'1',
                 'DESC': 'Corrente de saída da fonte de 12 Volts'
             },
             {
-                'ADC':'1', 'CH':'3', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon', 'template':current, 'CTE':'1',
+                'ADC':'1', 'CH':'3', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentPos3V3-Mon', 'template':current, 'CTE':'1',
                 'DESC': 'Corrente de saída da fonte de 3.3 Volts'
             },
         ]
