@@ -19,6 +19,7 @@ record(calc, "SSASwPS02:ADC0:Data-Mon_enbl"){
    field(INPA, "SSASwPS02:ADC0:Data-Mon.STAT CP")
    field(INPB, "SSASwPS02:ADC0:Data-Mon CP")
 }
+
 record(waveform, "SSASwPS02:ADC1:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC1 Data")
@@ -32,34 +33,6 @@ record(calc, "SSASwPS02:ADC1:Data-Mon_enbl"){
    field(CALC, "A#0")
    field(INPA, "SSASwPS02:ADC1:Data-Mon.STAT CP")
    field(INPB, "SSASwPS02:ADC1:Data-Mon CP")
-}
-record(waveform, "SSASwPS02:ADC2:Data-Mon"){
-    field(PINI, "YES")
-    field(DESC, "ADC2 Data")
-    field(SCAN, "$(SCAN=1 second)")
-    field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC2) $(PORT) $(A)")
-    field(FTVL, "DOUBLE")
-    field(NELM, "4")
-}
-record(calc, "SSASwPS02:ADC2:Data-Mon_enbl"){
-   field(CALC, "A#0")
-   field(INPA, "SSASwPS02:ADC2:Data-Mon.STAT CP")
-   field(INPB, "SSASwPS02:ADC2:Data-Mon CP")
-}
-record(waveform, "SSASwPS02:ADC3:Data-Mon"){
-    field(PINI, "YES")
-    field(DESC, "ADC3 Data")
-    field(SCAN, "$(SCAN=1 second)")
-    field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC3) $(PORT) $(A)")
-    field(FTVL, "DOUBLE")
-    field(NELM, "4")
-}
-record(calc, "SSASwPS02:ADC3:Data-Mon_enbl"){
-   field(CALC, "A#0")
-   field(INPA, "SSASwPS02:ADC3:Data-Mon.STAT CP")
-   field(INPB, "SSASwPS02:ADC3:Data-Mon CP")
 }
 
 record(calc, "RA-RaSIA02:RF-SSASwPS:VoltPos5V-Mon"){

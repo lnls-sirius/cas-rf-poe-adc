@@ -1,67 +1,26 @@
 #!/usr/bin/python3
 from string import Template
-adc = Template('''
+autosave = Template('''
 record(stringin, "${ioc}:SaveName"){
     field(VAL,  "${ioc}.sav")
     field(PINI, "YES")
     field(DESC, "Autosave destination file")
 }
-
-record(waveform, "${ioc}:ADC0:Data-Mon"){
+''')
+adc = Template('''
+record(waveform, "${ioc}:ADC${N}:Data-Mon"){
     field(PINI, "YES")
-    field(DESC, "ADC0 Data")
+    field(DESC, "ADC${N} Data")
     field(SCAN, "$$(SCAN=1 second)")
     field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC0) $$(PORT) $$(A)")
+    field(INP,  "@ADC.proto getData(ADC${N}) $$(PORT) $$(A)")
     field(FTVL, "DOUBLE")
     field(NELM, "4")
 }
-record(calc, "${ioc}:ADC0:Data-Mon_enbl"){
+record(calc, "${ioc}:ADC${N}:Data-Mon_enbl"){
    field(CALC, "A#0")
-   field(INPA, "${ioc}:ADC0:Data-Mon.STAT CP")
-   field(INPB, "${ioc}:ADC0:Data-Mon CP")
-}
-record(waveform, "${ioc}:ADC1:Data-Mon"){
-    field(PINI, "YES")
-    field(DESC, "ADC1 Data")
-    field(SCAN, "$$(SCAN=1 second)")
-    field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC1) $$(PORT) $$(A)")
-    field(FTVL, "DOUBLE")
-    field(NELM, "4")
-}
-record(calc, "${ioc}:ADC1:Data-Mon_enbl"){
-   field(CALC, "A#0")
-   field(INPA, "${ioc}:ADC1:Data-Mon.STAT CP")
-   field(INPB, "${ioc}:ADC1:Data-Mon CP")
-}
-record(waveform, "${ioc}:ADC2:Data-Mon"){
-    field(PINI, "YES")
-    field(DESC, "ADC2 Data")
-    field(SCAN, "$$(SCAN=1 second)")
-    field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC2) $$(PORT) $$(A)")
-    field(FTVL, "DOUBLE")
-    field(NELM, "4")
-}
-record(calc, "${ioc}:ADC2:Data-Mon_enbl"){
-   field(CALC, "A#0")
-   field(INPA, "${ioc}:ADC2:Data-Mon.STAT CP")
-   field(INPB, "${ioc}:ADC2:Data-Mon CP")
-}
-record(waveform, "${ioc}:ADC3:Data-Mon"){
-    field(PINI, "YES")
-    field(DESC, "ADC3 Data")
-    field(SCAN, "$$(SCAN=1 second)")
-    field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC3) $$(PORT) $$(A)")
-    field(FTVL, "DOUBLE")
-    field(NELM, "4")
-}
-record(calc, "${ioc}:ADC3:Data-Mon_enbl"){
-   field(CALC, "A#0")
-   field(INPA, "${ioc}:ADC3:Data-Mon.STAT CP")
-   field(INPB, "${ioc}:ADC3:Data-Mon CP")
+   field(INPA, "${ioc}:ADC${N}:Data-Mon.STAT CP")
+   field(INPB, "${ioc}:ADC${N}:Data-Mon CP")
 }
 ''')
 
@@ -206,7 +165,8 @@ defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OF
 
 dbs = [
     {'ioc':'SIA-CalSys',
-    'readings' : [
+     'adcs': ['0', '1', '2'],
+     'readings' : [
         {'ADC':'0', 'CH':'0', 'N':'1',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.68', 'p2':'-51.47', 'p3':'11.04', 'p4':'-3.75', 'p5':'0.2512'},
         {'ADC':'0', 'CH':'1', 'N':'2',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'47.09', 'p2':'-53.66', 'p3':'12.17', 'p4':'-3.742', 'p5':'0.149'},
         {'ADC':'0', 'CH':'2', 'N':'3',  'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'44.51', 'p2':'-47.16', 'p3':'5.411', 'p4':'-0.5061', 'p5':'-0.4482'},
@@ -228,7 +188,8 @@ dbs = [
         {'ADC':'3', 'CH':'3', 'N':'16', 'NAME':'RA-RaSIA01:RF-LLRFCalSys', 'template':power, 'p1':'45.6', 'p2':'-51.55', 'p3':'11.61', 'p4':'-4.361', 'p5':'0.4268'},
     ]},
     {'ioc':'SIA-CavPlDrv',
-         'readings': [
+     'adcs': ['0', '1', '2'],
+     'readings': [
              {'ADC': '0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos5V-Mon', 'template':voltage, 'CTE':'2.'},
              {'ADC':'0', 'CH':'1', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:Current5V-Mon',  'template':current},
              {'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-CavPlDrivers:VoltPos48V-Mon', 'template':voltage, 'CTE':res(90.9,10.)},
@@ -250,6 +211,7 @@ dbs = [
      },
     {
         'ioc':'LLRFLinPS01',
+        'adcs':['0', '1'],
         'readings': [
             {
                 'ADC':'0', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
@@ -288,6 +250,7 @@ dbs = [
     },
     {
         'ioc':'LLRFLinPS02',
+        'adcs':['0', '1'],
         'readings': [
             {
                 'ADC':'0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
@@ -326,6 +289,7 @@ dbs = [
     },
     {
         'ioc':'LLRFSwPS01',
+        'adcs':['0', '1'],
         'readings': [
             {
                 'ADC':'0', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFSwPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
@@ -356,6 +320,7 @@ dbs = [
     },
     {
         'ioc': 'LLRFSwPS02',
+        'adcs':['0', '1'],
         'readings': [
             {
                 'ADC': '0', 'CH': '0', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:VoltPos5V-Mon', 'template': voltage,
@@ -385,6 +350,7 @@ dbs = [
     },
     {
         'ioc': 'SSASwPS01',
+        'adcs':['0', '1'],
         'readings': [
             {
                 'ADC': '0', 'CH': '0', 'NAME': 'RA-RaBO02:RF-SSASwPS:VoltPos5V-Mon', 'template': voltage,
@@ -418,6 +384,7 @@ dbs = [
     },
     {
         'ioc': 'SSASwPS02',
+        'adcs':['0', '1'],
         'readings': [
             {
                 'ADC': '0', 'CH': '0', 'NAME': 'RA-RaSIA02:RF-SSASwPS:VoltPos5V-Mon', 'template': voltage,
@@ -456,7 +423,9 @@ if __name__ == '__main__':
     for data in dbs:
         db = ''
         with open(data['ioc'] + '.db', 'w+') as f:
-            db += adc.safe_substitute(defaults, ioc=data['ioc'])
+            db += autosave.safe_substitute(defaults, ioc=data['ioc'])
+            for N in data['adcs']:
+                db += adc.safe_substitute(defaults, ioc=data['ioc'], N=N)
             for reading in data['readings']:
                 db += reading['template'].safe_substitute(defaults, ioc=data['ioc'], **reading)
             f.write(db)
