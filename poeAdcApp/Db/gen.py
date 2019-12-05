@@ -121,6 +121,7 @@ record(calc, "${NAME}"){
     field(INPA, "${ioc}:ADC${ADC}:Data-Mon.VAL[${CH}] CP MSS")
     field(EGU, "V")
     field(DESC, "${DESC}")
+    field(MDEL, "${MDEL}")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(PREC, "${PREC}")
@@ -153,6 +154,7 @@ record(calc, "${NAME}"){
     field(CALC, "((A - 0.5)/0.4)")
     field(INPA, "${NAME}_raw CP MSS")
     field(PREC, "${PREC}")
+    field(MDEL, "${MDEL}")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")
@@ -200,7 +202,7 @@ record(bi, "${NAME}"){
 def res(R, R_):
     return str(((R_+R)/R_))
 
-defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB', 'PREC':'4'}
+defaults = {'MIN':'-41.', 'CTE':'1.', 'DESC':'', 'W':'PwrW', 'dBm':'PwrdBm', 'OFS':'OFSdB', 'PREC':'4', 'MDEL':'0'}
 
 dbs = [
     {'ioc':'SIA-CalSys',
@@ -251,36 +253,36 @@ dbs = [
         'readings': [
             {
                 'ADC':'0', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
-                'DESC': 'Tensão de saída da fonte de 5 Volts'
+                'DESC': 'Tensão de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltNeg5V-Mon',  'template':voltage, 'CTE':'-'+res(10,20),
-                'DESC': 'Tensão de saída da fonte de -5 Volts'
+                'DESC': 'Tensão de saída da fonte de -5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltPos12V-Mon', 'template':voltage, 'CTE':res(20,10),
-                'DESC': 'Tensão de saída da fonte de 12 Volts'
+                'DESC': 'Tensão de saída da fonte de 12 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'3', 'NAME':'RA-RaBO01:RF-LLRFLinPS:VoltPos3V3-Mon', 'template':voltage, 'CTE':'1',
-                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
 
             {
                 'ADC':'1', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de 5 Volts'
+                'DESC': 'Corrente de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon',  'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de -5 Volts'
+                'DESC': 'Corrente de saída da fonte de -5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon', 'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de 12 Volts'
+                'DESC': 'Corrente de saída da fonte de 12 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'3', 'NAME':'RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon', 'template':current, 'CTE':'1',
-                'DESC': 'Corrent de saída da fonte de 3.3 Volts'
+                'DESC': 'Corrent de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
         ]
     },
@@ -289,36 +291,36 @@ dbs = [
         'readings': [
             {
                 'ADC':'0', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
-                'DESC': 'Tensão de saída da fonte de 5 Volts'
+                'DESC': 'Tensão de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'1', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltNeg5V-Mon',  'template':voltage, 'CTE':'-'+res(10,20),
-                'DESC': 'Tensão de saída da fonte de -5 Volts'
+                'DESC': 'Tensão de saída da fonte de -5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'2', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltPos12V-Mon', 'template':voltage, 'CTE':res(20,10),
-                'DESC': 'Tensão de saída da fonte de 12 Volts'
+                'DESC': 'Tensão de saída da fonte de 12 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'3', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:VoltPos3V3-Mon', 'template':voltage, 'CTE':'1',
-                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
 
             {
                 'ADC':'1', 'CH':'0', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de 5 Volts'
+                'DESC': 'Corrente de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'1', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentNeg5V-Mon',  'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de -5 Volts'
+                'DESC': 'Corrente de saída da fonte de -5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'2', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentPos12V-Mon', 'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de 12 Volts'
+                'DESC': 'Corrente de saída da fonte de 12 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'3', 'NAME':'RA-RaSIA01:RF-LLRFLinPS:CurrentPos3V3-Mon', 'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
         ]
     },
@@ -327,28 +329,28 @@ dbs = [
         'readings': [
             {
                 'ADC':'0', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFSwPS:VoltPos5V-Mon',  'template':voltage, 'CTE':res(10,20),
-                'DESC': 'Tensão de saída da fonte de 5 Volts'
+                'DESC': 'Tensão de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFSwPS:VoltPos24V-Mon',  'template':voltage, 'CTE':res(49.9,10),
-                'DESC': 'Tensão de saída da fonte de 24 Volts'
+                'DESC': 'Tensão de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'0', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFSwPS:VoltPos3V3-Mon', 'template':voltage, 'CTE':'1',
-                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
 
             {
                 'ADC':'1', 'CH':'0', 'NAME':'RA-RaBO01:RF-LLRFSwPS:CurrentPos5V-Mon',  'template':current, 'CTE':'1',
-                    'DESC': 'Corrente de saída da fonte de 5 Volts'
+                    'DESC': 'Corrente de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'1', 'NAME':'RA-RaBO01:RF-LLRFSwPS:CurrentPos24V-Mon',  'template':current, 'CTE':'1',
-                    'DESC': 'Corrente de saída da fonte de 24 Volts'
+                    'DESC': 'Corrente de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC':'1', 'CH':'2', 'NAME':'RA-RaBO01:RF-LLRFSwPS:CurrentPos3V3-Mon', 'template':current, 'CTE':'1',
-                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
         ]
     },
@@ -357,29 +359,27 @@ dbs = [
         'readings': [
             {
                 'ADC': '0', 'CH': '0', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:VoltPos5V-Mon', 'template': voltage,
-                'CTE': res(10, 20),
-                'DESC': 'Tensão de saída da fonte de 5 Volts'
+                'CTE': res(10, 20), 'DESC': 'Tensão de saída da fonte de 5 Volts', 'MDEL':'0.001', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '1', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:VoltPos24V-Mon', 'template': voltage,
-                'CTE': res(49.9, 10),
-                'DESC': 'Tensão de saída da fonte de 24 Volts'
+                'CTE': res(49.9, 10), 'DESC': 'Tensão de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '2', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:VoltPos3V3-Mon', 'template': voltage, 'CTE': '1',
-                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '0', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:CurrentPos5V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 5 Volts'
+                'DESC': 'Corrente de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '1', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:CurrentPos24V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 24 Volts'
+                'DESC': 'Corrente de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '2', 'NAME': 'RA-RaSIA01:RF-LLRFSwPS:CurrentPos3V3-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
         ]
     },
@@ -388,33 +388,31 @@ dbs = [
         'readings': [
             {
                 'ADC': '0', 'CH': '0', 'NAME': 'RA-RaBO02:RF-SSASwPS:VoltPos5V-Mon', 'template': voltage,
-                'CTE': res(10, 20),
-                'DESC': 'Tensão de saída da fonte de 5 Volts'
+                'CTE': res(10, 20), 'DESC': 'Tensão de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '1', 'NAME': 'RA-RaBO02:RF-SSASwPS:VoltPos12V-Mon', 'template': voltage,
-                'CTE': res(20, 10),
-                'DESC': 'Tensão de saída da fonte de 24 Volts'
+                'CTE': res(20, 10), 'DESC': 'Tensão de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '2', 'NAME': 'RA-RaBO02:RF-SSASwPS:VoltNeg12V-Mon', 'template': voltage, 'CTE':'-'+ res(20, 10),
-                'DESC': 'Tensão de saída da fonte de 3.3 Volts'
+                'DESC': 'Tensão de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '3', 'NAME': 'RA-RaBO02:RF-SSASwPS:SSAOn-Mon', 'template': voltage, 'CTE': '1',
-                'DESC': 'Monitoramento Liga Módulos'
+                'DESC': 'Monitoramento Liga Módulos', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '0', 'NAME': 'RA-RaBO02:RF-SSASwPS:CurrentPos5V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 5 Volts'
+                'DESC': 'Corrente de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '1', 'NAME': 'RA-RaBO02:RF-SSASwPS:CurrentPos12V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 24 Volts'
+                'DESC': 'Corrente de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '2', 'NAME': 'RA-RaBO02:RF-SSASwPS:CurrentNeg12V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
         ]
     },
@@ -423,33 +421,31 @@ dbs = [
         'readings': [
             {
                 'ADC': '0', 'CH': '0', 'NAME': 'RA-RaSIA02:RF-SSASwPS:VoltPos5V-Mon', 'template': voltage,
-                'CTE': res(10, 20),
-                'DESC': 'Tensão de saída da fonte de 5 Volts'
+                'CTE': res(10, 20), 'DESC': 'Tensão de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '1', 'NAME': 'RA-RaSIA02:RF-SSASwPS:VoltPos12V-Mon', 'template': voltage,
-                'CTE': res(20, 10),
-                'DESC': 'Tensão de saída da fonte de 24 Volts'
+                'CTE': res(20, 10), 'DESC': 'Tensão de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '2', 'NAME': 'RA-RaSIA02:RF-SSASwPS:VoltNeg12V-Mon', 'template': voltage, 'CTE': '-'+res(20, 10),
-                'DESC': 'Tensão de saída da fonte de -12 Volts'
+                'DESC': 'Tensão de saída da fonte de -12 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '0', 'CH': '3', 'NAME': 'RA-RaSIA02:RF-SSASwPS:SSAOn-Mon', 'template': voltage, 'CTE': '1',
-                'DESC': 'Monitoramento Liga Módulos'
+                'DESC': 'Monitoramento Liga Módulos', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '0', 'NAME': 'RA-RaSIA02:RF-SSASwPS:CurrentPos5V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 5 Volts'
+                'DESC': 'Corrente de saída da fonte de 5 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '1', 'NAME': 'RA-RaSIA02:RF-SSASwPS:CurrentPos12V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 24 Volts'
+                'DESC': 'Corrente de saída da fonte de 24 Volts', 'MDEL':'0.001'
             },
             {
                 'ADC': '1', 'CH': '2', 'NAME': 'RA-RaSIA02:RF-SSASwPS:CurrentNeg12V-Mon', 'template': current, 'CTE': '1',
-                'DESC': 'Corrente de saída da fonte de 3.3 Volts'
+                'DESC': 'Corrente de saída da fonte de 3.3 Volts', 'MDEL':'0.001'
             },
         ]
     },
