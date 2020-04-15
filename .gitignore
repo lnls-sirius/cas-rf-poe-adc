@@ -8,3 +8,4 @@ poeAdcApp/src/O.Common/
 poeAdcApp/src/O.linux-arm/
 __pycache__
 *.pyc
+autosave/SIA-CalSys.sav_*
