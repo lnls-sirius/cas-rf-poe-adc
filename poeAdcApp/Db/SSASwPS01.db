@@ -1,0 +1,144 @@
+
+record(stringin, "SSASwPS01:SaveName"){
+    field(VAL,  "SSASwPS01.sav")
+    field(PINI, "YES")
+    field(DESC, "Autosave destination file")
+}
+
+record(waveform, "SSASwPS01:ADC0:Data-Mon"){
+    field(PINI, "YES")
+    field(DESC, "ADC0 Data")
+    field(SCAN, "$(SCAN=1 second)")
+    field(DTYP, "stream")
+    field(INP,  "@ADC.proto getData(ADC0) $(PORT) $(A)")
+    field(FTVL, "DOUBLE")
+    field(NELM, "4")
+}
+record(calc, "SSASwPS01:ADC0:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "SSASwPS01:ADC0:Data-Mon.STAT CP")
+   field(INPB, "SSASwPS01:ADC0:Data-Mon CP")
+}
+
+record(waveform, "SSASwPS01:ADC1:Data-Mon"){
+    field(PINI, "YES")
+    field(DESC, "ADC1 Data")
+    field(SCAN, "$(SCAN=1 second)")
+    field(DTYP, "stream")
+    field(INP,  "@ADC.proto getData(ADC1) $(PORT) $(A)")
+    field(FTVL, "DOUBLE")
+    field(NELM, "4")
+}
+record(calc, "SSASwPS01:ADC1:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "SSASwPS01:ADC1:Data-Mon.STAT CP")
+   field(INPB, "SSASwPS01:ADC1:Data-Mon CP")
+}
+
+record(calc, "RA-RaBO02:RF-SSASwPS:VoltPos5V-Mon"){
+    field(CALC, "(5.*A/4095.)*(1.5)")
+    field(INPA, "SSASwPS01:ADC0:Data-Mon.VAL[0] CP MSS")
+    field(EGU, "V")
+    field(DESC, "Tensão de saída da fonte de 5 Volts")
+    field(MDEL, "0.001")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(PREC, "4")
+    field(SDIS, "SSASwPS01:ADC0:Data-Mon_enbl")
+}
+
+record(calc, "RA-RaBO02:RF-SSASwPS:VoltPos12V-Mon"){
+    field(CALC, "(5.*A/4095.)*(3.0)")
+    field(INPA, "SSASwPS01:ADC0:Data-Mon.VAL[1] CP MSS")
+    field(EGU, "V")
+    field(DESC, "Tensão de saída da fonte de 24 Volts")
+    field(MDEL, "0.001")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(PREC, "4")
+    field(SDIS, "SSASwPS01:ADC0:Data-Mon_enbl")
+}
+
+record(calc, "RA-RaBO02:RF-SSASwPS:VoltNeg12V-Mon"){
+    field(CALC, "(5.*A/4095.)*(-3.0)")
+    field(INPA, "SSASwPS01:ADC0:Data-Mon.VAL[2] CP MSS")
+    field(EGU, "V")
+    field(DESC, "Tensão de saída da fonte de 3.3 Volts")
+    field(MDEL, "0.001")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(PREC, "4")
+    field(SDIS, "SSASwPS01:ADC0:Data-Mon_enbl")
+}
+
+record(calc, "RA-RaBO02:RF-SSASwPS:SSAOn-Mon"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "SSASwPS01:ADC0:Data-Mon.VAL[3] CP MSS")
+    field(EGU, "V")
+    field(DESC, "Monitoramento Liga Módulos")
+    field(MDEL, "0.001")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(PREC, "4")
+    field(SDIS, "SSASwPS01:ADC0:Data-Mon_enbl")
+}
+
+record(calc,"RA-RaBO02:RF-SSASwPS:CurrentPos5V-Mon_raw"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "SSASwPS01:ADC1:Data-Mon.VAL[0] CP MSS")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SSASwPS01:ADC1:Data-Mon_enbl")
+    field(PREC, "4")
+}
+# ((ADC1[0] - 0.5) / 0.4)
+record(calc, "RA-RaBO02:RF-SSASwPS:CurrentPos5V-Mon"){
+    field(CALC, "((A - 0.5)/0.4)")
+    field(INPA, "RA-RaBO02:RF-SSASwPS:CurrentPos5V-Mon_raw CP MSS")
+    field(PREC, "4")
+    field(MDEL, "0.001")
+    field(EGU,  "A")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SSASwPS01:ADC1:Data-Mon_enbl")
+}
+
+record(calc,"RA-RaBO02:RF-SSASwPS:CurrentPos12V-Mon_raw"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "SSASwPS01:ADC1:Data-Mon.VAL[1] CP MSS")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SSASwPS01:ADC1:Data-Mon_enbl")
+    field(PREC, "4")
+}
+# ((ADC1[1] - 0.5) / 0.4)
+record(calc, "RA-RaBO02:RF-SSASwPS:CurrentPos12V-Mon"){
+    field(CALC, "((A - 0.5)/0.4)")
+    field(INPA, "RA-RaBO02:RF-SSASwPS:CurrentPos12V-Mon_raw CP MSS")
+    field(PREC, "4")
+    field(MDEL, "0.001")
+    field(EGU,  "A")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SSASwPS01:ADC1:Data-Mon_enbl")
+}
+
+record(calc,"RA-RaBO02:RF-SSASwPS:CurrentNeg12V-Mon_raw"){
+    field(CALC, "(5.*A/4095.)*(1)")
+    field(INPA, "SSASwPS01:ADC1:Data-Mon.VAL[2] CP MSS")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SSASwPS01:ADC1:Data-Mon_enbl")
+    field(PREC, "4")
+}
+# ((ADC1[2] - 0.5) / 0.4)
+record(calc, "RA-RaBO02:RF-SSASwPS:CurrentNeg12V-Mon"){
+    field(CALC, "((A - 0.5)/0.4)")
+    field(INPA, "RA-RaBO02:RF-SSASwPS:CurrentNeg12V-Mon_raw CP MSS")
+    field(PREC, "4")
+    field(MDEL, "0.001")
+    field(EGU,  "A")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "SSASwPS01:ADC1:Data-Mon_enbl")
+}
