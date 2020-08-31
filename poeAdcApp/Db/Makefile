@@ -17,12 +17,7 @@ include $(TOP)/configure/RULES
 
 .PHONY: db
 db :
-	./gen.py
-	cat SIA-CalSys.db | grep record | grep PwrdBm | grep Mon | grep -Po  '(?<=")(.*?)(?="\){)' | sed 's/.*/&\.DESC/' > SIA-CalSys.req
-	cat SIA-CalSys.db | grep record | grep OFSdB | grep -Po  '(?<=")(.*?)(?="\){)' >> SIA-CalSys.req
-	# cat SIA-CavPlDrv.db | grep record | grep PwrdBm | grep Mon | grep -Po  '(?<=")(.*?)(?="\){)' | sed 's/.*/&\.DESC/' > SIA-CavPlDrv.req
-	# cat SIA-CavPlDrv.db | grep record | grep OFSdB | grep -Po  '(?<=")(.*?)(?="\){)' >> SIA-CavPlDrv.req
-
+	./build.sh
 #----------------------------------------
 #  ADD RULES AFTER THIS LINE
 

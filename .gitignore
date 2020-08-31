@@ -1,3 +1,6 @@
+*.pyc
+__pycache__
+autosave/SIA-CalSys.sav_*
 bin/
 configure/O.linux-arm/
 db/
@@ -6,7 +9,3 @@ iocBoot/iocpoeAdc/envPaths
 poeAdcApp/Db/O.linux-arm/
 poeAdcApp/src/O.Common/
 poeAdcApp/src/O.linux-arm/
-__pycache__
-*.pyc
-
-.idea/

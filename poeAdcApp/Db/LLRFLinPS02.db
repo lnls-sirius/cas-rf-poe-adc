@@ -19,6 +19,7 @@ record(calc, "LLRFLinPS02:ADC0:Data-Mon_enbl"){
    field(INPA, "LLRFLinPS02:ADC0:Data-Mon.STAT CP")
    field(INPB, "LLRFLinPS02:ADC0:Data-Mon CP")
 }
+
 record(waveform, "LLRFLinPS02:ADC1:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC1 Data")
@@ -33,40 +34,13 @@ record(calc, "LLRFLinPS02:ADC1:Data-Mon_enbl"){
    field(INPA, "LLRFLinPS02:ADC1:Data-Mon.STAT CP")
    field(INPB, "LLRFLinPS02:ADC1:Data-Mon CP")
 }
-record(waveform, "LLRFLinPS02:ADC2:Data-Mon"){
-    field(PINI, "YES")
-    field(DESC, "ADC2 Data")
-    field(SCAN, "$(SCAN=1 second)")
-    field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC2) $(PORT) $(A)")
-    field(FTVL, "DOUBLE")
-    field(NELM, "4")
-}
-record(calc, "LLRFLinPS02:ADC2:Data-Mon_enbl"){
-   field(CALC, "A#0")
-   field(INPA, "LLRFLinPS02:ADC2:Data-Mon.STAT CP")
-   field(INPB, "LLRFLinPS02:ADC2:Data-Mon CP")
-}
-record(waveform, "LLRFLinPS02:ADC3:Data-Mon"){
-    field(PINI, "YES")
-    field(DESC, "ADC3 Data")
-    field(SCAN, "$(SCAN=1 second)")
-    field(DTYP, "stream")
-    field(INP,  "@ADC.proto getData(ADC3) $(PORT) $(A)")
-    field(FTVL, "DOUBLE")
-    field(NELM, "4")
-}
-record(calc, "LLRFLinPS02:ADC3:Data-Mon_enbl"){
-   field(CALC, "A#0")
-   field(INPA, "LLRFLinPS02:ADC3:Data-Mon.STAT CP")
-   field(INPB, "LLRFLinPS02:ADC3:Data-Mon CP")
-}
 
 record(calc, "RA-RaSIA01:RF-LLRFLinPS:VoltPos5V-Mon"){
     field(CALC, "(5.*A/4095.)*(1.5)")
     field(INPA, "LLRFLinPS02:ADC0:Data-Mon.VAL[0] CP MSS")
     field(EGU, "V")
     field(DESC, "Tensão de saída da fonte de 5 Volts")
+    field(MDEL, "0.001")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(PREC, "4")
@@ -78,6 +52,7 @@ record(calc, "RA-RaSIA01:RF-LLRFLinPS:VoltNeg5V-Mon"){
     field(INPA, "LLRFLinPS02:ADC0:Data-Mon.VAL[1] CP MSS")
     field(EGU, "V")
     field(DESC, "Tensão de saída da fonte de -5 Volts")
+    field(MDEL, "0.001")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(PREC, "4")
@@ -89,6 +64,7 @@ record(calc, "RA-RaSIA01:RF-LLRFLinPS:VoltPos12V-Mon"){
     field(INPA, "LLRFLinPS02:ADC0:Data-Mon.VAL[2] CP MSS")
     field(EGU, "V")
     field(DESC, "Tensão de saída da fonte de 12 Volts")
+    field(MDEL, "0.001")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(PREC, "4")
@@ -100,13 +76,14 @@ record(calc, "RA-RaSIA01:RF-LLRFLinPS:VoltPos3V3-Mon"){
     field(INPA, "LLRFLinPS02:ADC0:Data-Mon.VAL[3] CP MSS")
     field(EGU, "V")
     field(DESC, "Tensão de saída da fonte de 3.3 Volts")
+    field(MDEL, "0.001")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(PREC, "4")
     field(SDIS, "LLRFLinPS02:ADC0:Data-Mon_enbl")
 }
 
-record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon_raw"){
+record(calc,"RA-RaSIA01:RF-LLRFLinPS:CurrentPos5V-Mon_raw"){
     field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "LLRFLinPS02:ADC1:Data-Mon.VAL[0] CP MSS")
     field(DISV, "1")
@@ -115,17 +92,18 @@ record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon_raw"){
     field(PREC, "4")
 }
 # ((ADC1[0] - 0.5) / 0.4)
-record(calc, "RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon"){
+record(calc, "RA-RaSIA01:RF-LLRFLinPS:CurrentPos5V-Mon"){
     field(CALC, "((A - 0.5)/0.4)")
-    field(INPA, "RA-RaBO01:RF-LLRFLinPS:CurrentPos5V-Mon_raw CP MSS")
+    field(INPA, "RA-RaSIA01:RF-LLRFLinPS:CurrentPos5V-Mon_raw CP MSS")
     field(PREC, "4")
+    field(MDEL, "0.001")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "LLRFLinPS02:ADC1:Data-Mon_enbl")
 }
 
-record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon_raw"){
+record(calc,"RA-RaSIA01:RF-LLRFLinPS:CurrentNeg5V-Mon_raw"){
     field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "LLRFLinPS02:ADC1:Data-Mon.VAL[1] CP MSS")
     field(DISV, "1")
@@ -134,17 +112,18 @@ record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon_raw"){
     field(PREC, "4")
 }
 # ((ADC1[1] - 0.5) / 0.4)
-record(calc, "RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon"){
+record(calc, "RA-RaSIA01:RF-LLRFLinPS:CurrentNeg5V-Mon"){
     field(CALC, "((A - 0.5)/0.4)")
-    field(INPA, "RA-RaBO01:RF-LLRFLinPS:CurrentNeg5V-Mon_raw CP MSS")
+    field(INPA, "RA-RaSIA01:RF-LLRFLinPS:CurrentNeg5V-Mon_raw CP MSS")
     field(PREC, "4")
+    field(MDEL, "0.001")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "LLRFLinPS02:ADC1:Data-Mon_enbl")
 }
 
-record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon_raw"){
+record(calc,"RA-RaSIA01:RF-LLRFLinPS:CurrentPos12V-Mon_raw"){
     field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "LLRFLinPS02:ADC1:Data-Mon.VAL[2] CP MSS")
     field(DISV, "1")
@@ -153,17 +132,18 @@ record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon_raw"){
     field(PREC, "4")
 }
 # ((ADC1[2] - 0.5) / 0.4)
-record(calc, "RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon"){
+record(calc, "RA-RaSIA01:RF-LLRFLinPS:CurrentPos12V-Mon"){
     field(CALC, "((A - 0.5)/0.4)")
-    field(INPA, "RA-RaBO01:RF-LLRFLinPS:CurrentPos12V-Mon_raw CP MSS")
+    field(INPA, "RA-RaSIA01:RF-LLRFLinPS:CurrentPos12V-Mon_raw CP MSS")
     field(PREC, "4")
+    field(MDEL, "0.001")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "LLRFLinPS02:ADC1:Data-Mon_enbl")
 }
 
-record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon_raw"){
+record(calc,"RA-RaSIA01:RF-LLRFLinPS:CurrentPos3V3-Mon_raw"){
     field(CALC, "(5.*A/4095.)*(1)")
     field(INPA, "LLRFLinPS02:ADC1:Data-Mon.VAL[3] CP MSS")
     field(DISV, "1")
@@ -172,10 +152,11 @@ record(calc,"RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon_raw"){
     field(PREC, "4")
 }
 # ((ADC1[3] - 0.5) / 0.4)
-record(calc, "RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon"){
+record(calc, "RA-RaSIA01:RF-LLRFLinPS:CurrentPos3V3-Mon"){
     field(CALC, "((A - 0.5)/0.4)")
-    field(INPA, "RA-RaBO01:RF-LLRFLinPS:CurrentPos3V3-Mon_raw CP MSS")
+    field(INPA, "RA-RaSIA01:RF-LLRFLinPS:CurrentPos3V3-Mon_raw CP MSS")
     field(PREC, "4")
+    field(MDEL, "0.001")
     field(EGU,  "A")
     field(DISV, "1")
     field(DISS, "INVALID")
