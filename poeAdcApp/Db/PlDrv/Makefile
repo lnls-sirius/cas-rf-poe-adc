@@ -1,7 +1,7 @@
 TOP=../..
 include $(TOP)/configure/CONFIG
 
-DB += ADC.proto
+DB += SIA-CavPlDrv.db
 
 include $(TOP)/configure/RULES
 #----------------------------------------

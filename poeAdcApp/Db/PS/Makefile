@@ -1,7 +1,12 @@
 TOP=../..
 include $(TOP)/configure/CONFIG
 
-DB += ADC.proto
+DB += LLRFLinPS01.db
+DB += LLRFLinPS02.db
+DB += LLRFSwPS01.db
+DB += LLRFSwPS02.db
+DB += SSASwPS01.db
+DB += SSASwPS02.db
 
 include $(TOP)/configure/RULES
 #----------------------------------------

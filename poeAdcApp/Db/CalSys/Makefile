@@ -1,7 +1,8 @@
 TOP=../..
 include $(TOP)/configure/CONFIG
 
-DB += ADC.proto
+DB += SIA-CalSys.db
+DB += SIA-CalSys.req
 
 include $(TOP)/configure/RULES
 #----------------------------------------
