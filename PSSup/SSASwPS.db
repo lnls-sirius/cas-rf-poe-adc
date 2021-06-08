@@ -91,7 +91,7 @@ record(calc,"$(P):$(D):CurrentPos5V-Mon_raw") {
     field(PREC, "4")
 }
 # ((ADC1[0] - 0.5) / 0.4)
-record(calc, "$(P):$(D):CurrentPos5V-Mon") {
+record(calc, "$(P):$(D):CurrentPos5V-Mon_") {
     field(CALC, "((A - 0.5)/0.4)")
     field(INPA, "$(P):$(D):CurrentPos5V-Mon_raw CP MSS")
     field(PREC, "4")
@@ -100,6 +100,12 @@ record(calc, "$(P):$(D):CurrentPos5V-Mon") {
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "$(P):$(D):ADC1-Mon_enbl")
+}
+record(calc, "$(P):$(D):CurrentPos5V-Mon") {
+    field(CALC, "A<0?0:A")
+    field(INPA, "$(P):$(D):CurrentPos5V-Mon_ CP MSS")
+    field(PREC, "4")
+    field(EGU,  "A")
 }
 
 record(calc,"$(P):$(D):CurrentPos12V-Mon_raw") {
@@ -111,7 +117,7 @@ record(calc,"$(P):$(D):CurrentPos12V-Mon_raw") {
     field(PREC, "4")
 }
 # ((ADC1[1] - 0.5) / 0.4)
-record(calc, "$(P):$(D):CurrentPos12V-Mon") {
+record(calc, "$(P):$(D):CurrentPos12V-Mon_") {
     field(CALC, "((A - 0.5)/0.4)")
     field(INPA, "$(P):$(D):CurrentPos12V-Mon_raw CP MSS")
     field(PREC, "4")
@@ -120,6 +126,12 @@ record(calc, "$(P):$(D):CurrentPos12V-Mon") {
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "$(P):$(D):ADC1-Mon_enbl")
+}
+record(calc, "$(P):$(D):CurrentPos12V-Mon") {
+    field(CALC, "A<0?0:A")
+    field(INPA, "$(P):$(D):CurrentPos12V-Mon_ CP MSS")
+    field(PREC, "4")
+    field(EGU,  "A")
 }
 
 record(calc,"$(P):$(D):CurrentNeg12V-Mon_raw") {
@@ -131,7 +143,7 @@ record(calc,"$(P):$(D):CurrentNeg12V-Mon_raw") {
     field(PREC, "4")
 }
 # ((ADC1[2] - 0.5) / 0.4)
-record(calc, "$(P):$(D):CurrentNeg12V-Mon") {
+record(calc, "$(P):$(D):CurrentNeg12V-Mon_") {
     field(CALC, "((A - 0.5)/0.4)")
     field(INPA, "$(P):$(D):CurrentNeg12V-Mon_raw CP MSS")
     field(PREC, "4")
@@ -140,4 +152,10 @@ record(calc, "$(P):$(D):CurrentNeg12V-Mon") {
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "$(P):$(D):ADC1-Mon_enbl")
+}
+record(calc, "$(P):$(D):CurrentNeg12V-Mon") {
+    field(CALC, "A<0?0:A")
+    field(INPA, "$(P):$(D):CurrentNeg12V-Mon_ CP MSS")
+    field(PREC, "4")
+    field(EGU,  "A")
 }
