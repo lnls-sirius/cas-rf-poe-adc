@@ -1,0 +1,23 @@
+[Unit]
+Description=Sirius RF POE ADC - IOC
+Wants=network-online.target
+After=network-online.target
+
+Wants=cas-rf-poe-adc-spi.service
+After=cas-rf-poe-adc-spi.service
+
+[Service]
+Restart=always
+RestartSec=10
+Type=simple
+
+WorkingDirectory=/opt/cas-rf-poe-adc/iocBoot/iocpoeAdc/
+ExecStartPre=/bin/sleep 50
+ExecStart=/usr/local/bin/procServ -f --allow -L - \
+    --chdir /opt/cas-rf-poe-adc/iocBoot/iocpoeAdc 20200 ./LLRFSwPS-Spare.cmd
+
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
