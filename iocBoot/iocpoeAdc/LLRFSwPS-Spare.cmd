@@ -7,13 +7,13 @@
 
 cd "${TOP}"
 
-epicsEnvSet("P", "RA-RaSIA02")
-epicsEnvSet("D", "RF-SSASwPS")
+epicsEnvSet("P", "SPARE")
+epicsEnvSet("D", "RF-LLRFSwPS")
 
 dbLoadDatabase "dbd/poeAdc.dbd"
 poeAdc_registerRecordDeviceDriver pdbbase
 
-dbLoadRecords("db/SSASwPS.db", "PORT=L0,A=0,P=$(P),D=$(D),S=.1")
+dbLoadRecords("db/LLRFSwPS.db", "PORT=L0,A=0,P=$(P),D=$(D),S=.1")
 
 drvAsynIPPortConfigure("L0", "unix://$(TOP)/poeAdcSPI/unix-socket")
 

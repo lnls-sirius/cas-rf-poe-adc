@@ -12,7 +12,7 @@ record(stringin, "${ioc}:SaveName"){
 record(waveform, "${ioc}:ADC0:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC0 Data")
-    field(SCAN, "$$(SCAN=1 second)")
+    field(SCAN, "$$(S=1) second")
     field(DTYP, "stream")
     field(INP,  "@ADC.proto getData(ADC0) $$(PORT) $$(A)")
     field(FTVL, "DOUBLE")
@@ -26,7 +26,7 @@ record(calc, "${ioc}:ADC0:Data-Mon_enbl"){
 record(waveform, "${ioc}:ADC1:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC1 Data")
-    field(SCAN, "$$(SCAN=1 second)")
+    field(SCAN, "$$(S=1) second")
     field(DTYP, "stream")
     field(INP,  "@ADC.proto getData(ADC1) $$(PORT) $$(A)")
     field(FTVL, "DOUBLE")
@@ -40,7 +40,7 @@ record(calc, "${ioc}:ADC1:Data-Mon_enbl"){
 record(waveform, "${ioc}:ADC2:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC2 Data")
-    field(SCAN, "$$(SCAN=1 second)")
+    field(SCAN, "$$(S=1) second")
     field(DTYP, "stream")
     field(INP,  "@ADC.proto getData(ADC2) $$(PORT) $$(A)")
     field(FTVL, "DOUBLE")
@@ -54,7 +54,7 @@ record(calc, "${ioc}:ADC2:Data-Mon_enbl"){
 record(waveform, "${ioc}:ADC3:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC3 Data")
-    field(SCAN, "$$(SCAN=1 second)")
+    field(SCAN, "$$(S=1) second")
     field(DTYP, "stream")
     field(INP,  "@ADC.proto getData(ADC3) $$(PORT) $$(A)")
     field(FTVL, "DOUBLE")
