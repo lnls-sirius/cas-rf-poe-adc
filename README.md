@@ -27,7 +27,7 @@ cd adafruit-beaglebone-io-python
 sudo python3 setup.py install
 ```
 
-[procServhttps](https://github.com/ralphlange/procServ) is required for runing the IOC.
+[procServ](https://github.com/ralphlange/procServ) is required for runing the IOC.
 ```bash
 apt-get install procserv
 ```
