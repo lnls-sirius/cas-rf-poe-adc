@@ -9,7 +9,7 @@ record(waveform, "RA-RaBO01:RF-RFCalSys:Vals"){
     field(DTYP, "stream")
     field(SCAN, ".5 second")
     field(DTYP, "stream")
-    field(INP,  "@RFCalibrationModule.proto getData $(PORT) $(A)")
+    field(INP,  "@BO-CalSys.proto getData $(PORT) $(A)")
     field(FTVL, "FLOAT")
     field(NELM, "17")
 }
@@ -62,7 +62,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm1_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm1_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm1_enbl")
@@ -126,7 +126,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm2_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm2_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm2_enbl")
@@ -190,7 +190,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm3_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm3_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm3_enbl")
@@ -254,7 +254,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm4_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm4_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm4_enbl")
@@ -318,7 +318,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm5_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm5_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm5_enbl")
@@ -382,7 +382,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm6_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm6_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm6_enbl")
@@ -446,7 +446,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm7_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm7_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm7_enbl")
@@ -510,7 +510,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm8_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm8_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm8_enbl")
@@ -574,7 +574,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm9_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm9_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm9_enbl")
@@ -638,7 +638,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm10_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm10_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm10_enbl")
@@ -702,7 +702,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm11_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm11_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm11_enbl")
@@ -766,7 +766,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm12_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm12_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm12_enbl")
@@ -830,7 +830,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm13_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm13_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm13_enbl")
@@ -894,7 +894,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm14_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm14_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm14_enbl")
@@ -958,7 +958,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm15_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm15_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm15_enbl")
@@ -1022,7 +1022,7 @@ record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm16_CALC"){
     field(PREC, "2")
 
     field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm16_ADC CP MSS")
-    
+
     field(DISV, "1")
     field(DISS, "INVALID")
     field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm16_enbl")

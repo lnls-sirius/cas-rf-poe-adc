@@ -9,7 +9,7 @@ cat SIA-CalSys.db | grep record | grep OFSdB | grep -Po '(?<=")(.*?)(?="\){)' >>
 popd
 
 # Booster Cal Sys (legacy scripts)
-./gen-cal-sys-legacy.py > ../CalSys/Sup/BO-CalSys.db
+./gen-cal-sys-legacy.py > ../CalSysSup/BO-CalSys.db
 pushd ../CalSysSup
 cat BO-CalSys.db | grep record | grep PwrdBm | grep Mon | grep -Po  '(?<=")(.*?)(?="\){)' | sed 's/.*/&\.DESC/' > BO-CalSys.req
 cat BO-CalSys.db | grep record | grep OFSdB | grep -Po  '(?<=")(.*?)(?="\){)' >> BO-CalSys.req
