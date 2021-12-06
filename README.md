@@ -1,7 +1,7 @@
 # cas-rf-poe-adc
 
 This repository contains iocs for the adc/spi hardware developed by the RF group.
-We start two systemd services, one for the IOC and another for a Python script that is used to get data in and out of the board.
+We start two systemd services, one for the IOC and another for a Python script that is used to get data in and out from the board.
 
 ```
         socket
