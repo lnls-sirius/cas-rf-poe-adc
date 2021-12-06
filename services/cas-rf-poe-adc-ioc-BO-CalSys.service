@@ -1,0 +1,27 @@
+[Unit]
+Description=Sirius RF POE ADC - IOC [legacy]
+Wants=network-online.target
+After=network-online.target
+
+Wants=cas-rf-poe-adc-spi-legacy.service
+After=cas-rf-poe-adc-spi-legacy.service
+
+[Service]
+Restart=always
+RestartSec=10
+Type=simple
+
+WorkingDirectory=/opt/cas-rf-poe-adc/iocBoot/iocpoeAdc/
+ExecStartPre=/bin/sleep 50
+ExecStart=/usr/local/bin/procServ \
+    --foreground \
+    --allow \
+    --logfile - \
+    --chdir /opt/cas-rf-poe-adc/iocBoot/iocpoeAdc \
+        20200 ./BO-CalSys.cmd
+
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
