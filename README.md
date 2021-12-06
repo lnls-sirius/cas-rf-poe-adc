@@ -9,8 +9,9 @@ We start two systemd services, one for the IOC and another for a Python script t
 ```
 
 # Requirements
-The python script requires the module [Adafruit_BBIO](https://github.com/adafruit/adafruit-beaglebone-io-python.git)
-Install via pip or manually:
+The python script requires the module [Adafruit_BBIO](https://github.com/adafruit/adafruit-beaglebone-io-python.git).
+
+Install it via pip or manually:
 
 ```bash
 #  via pip
