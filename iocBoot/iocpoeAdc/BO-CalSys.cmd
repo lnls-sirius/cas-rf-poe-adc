@@ -10,7 +10,7 @@ poeAdc_registerRecordDeviceDriver pdbbase
 
 drvAsynIPPortConfigure("P1", "unix://$(TOP)/poeAdcSPI/unix-socket")
 
-dbLoadRecords("db/RFCalibrationModule.db","PORT=P1,P=$(P),A=0")
+dbLoadRecords("db/BO-CalSys.db","PORT=P1,P=$(P),A=0")
 
 set_savefile_path("$(TOP)/autosave")
  
