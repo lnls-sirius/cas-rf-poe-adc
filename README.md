@@ -9,8 +9,9 @@ We start two systemd services, one for the IOC and another for a Python script t
 ```
 
 # Requirements
-The python script requires the following module [Adafruit_BBIO](https://github.com/adafruit/adafruit-beaglebone-io-python.git)
-Install via pip or manually:
+The python script requires the module [Adafruit_BBIO](https://github.com/adafruit/adafruit-beaglebone-io-python.git).
+
+Install it via pip or manually:
 
 ```bash
 #  via pip
@@ -26,7 +27,7 @@ cd adafruit-beaglebone-io-python
 sudo python3 setup.py install
 ```
 
-[procServhttps](https://github.com/ralphlange/procServ) is required for runing the IOC.
+[procServ](https://github.com/ralphlange/procServ) is required for runing the IOC.
 ```bash
 apt-get install procserv
 ```
