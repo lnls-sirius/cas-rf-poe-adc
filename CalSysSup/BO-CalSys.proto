@@ -1,0 +1,10 @@
+ReplyTimeout=1000;
+ReadTimeout=1000;
+
+getData {
+    InTerminator=CR LF;
+    separator=', ';
+    ExtraInput=Ignore;
+    out "DATA?";
+    in  "[%f]";
+}

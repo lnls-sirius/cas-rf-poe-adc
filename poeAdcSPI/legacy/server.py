@@ -1,11 +1,8 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
 import logging
 import os
 import socket
 
-from Adafruit_BBIO.SPI import SPI
-from adc import ADC
+from calibration import RF_Calibration_Module
 
 logger = logging.getLogger()
 
@@ -21,15 +18,7 @@ class Comm:
         self.unix_socket_path = unix_socket_path
         self.connection = None
         self.welcome_socket = None
-
-        spi = SPI(0, 0)
-        spi.msh = 2000000
-        spi.mode = 1
-        self.chs = [0, 1, 2, 3]
-        self.ADC0 = ADC("P9_24", spi)
-        self.ADC1 = ADC("P9_26", spi)
-        self.ADC2 = ADC("P9_28", spi)
-        self.ADC3 = ADC("P9_30", spi)
+        self.rf_cal = RF_Calibration_Module()
 
     def serve(self):
         try:
@@ -69,14 +58,10 @@ class Comm:
         try:
             while True:
                 command = connection.recv(1024).decode("utf-8")
-                if command == "ADC0:DATA?":
-                    response = str(self.ADC0.mean(self.chs))
-                elif command == "ADC1:DATA?":
-                    response = str(self.ADC1.mean(self.chs))
-                elif command == "ADC2:DATA?":
-                    response = str(self.ADC2.mean(self.chs))
-                elif command == "ADC3:DATA?":
-                    response = str(self.ADC3.mean(self.chs))
+                response = ResponseType.NO_RESPONSE
+
+                if command == "DATA?":
+                    response = self.rf_cal.read()
                 else:
                     response = ResponseType.UNSUPPORTED_COMMAND
 
