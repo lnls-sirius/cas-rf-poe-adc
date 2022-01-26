@@ -4,11 +4,11 @@ This repository contains iocs for the adc/spi hardware developed by the RF group
 We start two systemd services, one for the IOC and another for a Python script that is used to get data in and out from the board.
 
 ```
-        socket
 [IOC] <--------> [.py] <---> [hardware]
 ```
 
 # Requirements
+
 The python script requires the module [Adafruit_BBIO](https://github.com/adafruit/adafruit-beaglebone-io-python.git).
 
 Install it via pip or manually:
@@ -28,11 +28,13 @@ sudo python3 setup.py install
 ```
 
 [procServ](https://github.com/ralphlange/procServ) is required for runing the IOC.
+
 ```bash
 apt-get install procserv
 ```
 
-The following EPICS modules are used [configure/RELEASE](./configure/RELEASE): 
+The following EPICS modules are used [configure/RELEASE](./configure/RELEASE):
+
 ```
 ASYN        = /opt/epics-R3.15.5/modules/asyn4-35
 AUTOSAVE    = /opt/epics-R3.15.5/modules/autosave-R5-9
@@ -51,7 +53,6 @@ https://github.com/epics-modules/autosave
 https://github.com/epics-modules/calc
 
 https://github.com/paulscherrerinstitute/StreamDevice
-
 
 ## Beagle SPI PINs
 
@@ -76,4 +77,3 @@ config-pin P9.18 spi
 config-pin P9.21 spi
 config-pin P9.22 spi_sclk
 ```
-

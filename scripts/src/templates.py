@@ -2,12 +2,6 @@ from string import Template
 
 adc = Template(
     """
-record(stringin, "${ioc}:SaveName"){
-    field(VAL,  "${ioc}.sav")
-    field(PINI, "YES")
-    field(DESC, "Autosave destination file")
-}
-
 record(waveform, "${ioc}:ADC0:Data-Mon"){
     field(PINI, "YES")
     field(DESC, "ADC0 Data")

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import argparse
 from src.data import write_data, cal_sys_data
 
@@ -7,4 +7,5 @@ if __name__ == "__main__":
     args.add_argument("--dest", default="../CalSysSup", help="destination directory")
     parsed = args.parse_args()
 
-    write_data(parsed.dest, cal_sys_data)
+    for data in cal_sys_data:
+        write_data(parsed.dest, data)

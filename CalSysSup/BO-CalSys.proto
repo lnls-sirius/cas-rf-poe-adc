@@ -5,6 +5,6 @@ getData {
     InTerminator=CR LF;
     separator=', ';
     ExtraInput=Ignore;
-    out "DATA?";
+    out "ADC0:DATA?";
     in  "[%f]";
 }

@@ -1,1058 +1,889 @@
 
-record(stringin, "$(P):SaveName"){
-    field(VAL,  "$(P).sav")
+record(waveform, "BO-CalSys:ADC0:Data-Mon"){
     field(PINI, "YES")
-    field(DESC, "Autosave destination file")
-}
-
-record(waveform, "RA-RaBO01:RF-RFCalSys:Vals"){
+    field(DESC, "ADC0 Data")
+    field(SCAN, "$(S=1) second")
     field(DTYP, "stream")
-    field(SCAN, ".5 second")
-    field(DTYP, "stream")
-    field(INP,  "@BO-CalSys.proto getData $(PORT) $(A)")
-    field(FTVL, "FLOAT")
-    field(NELM, "17")
+    field(INP,  "@ADC.proto getData(ADC0) $(PORT) $(A)")
+    field(FTVL, "DOUBLE")
+    field(NELM, "4")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:Vals_enbl"){
+record(calc, "BO-CalSys:ADC0:Data-Mon_enbl"){
    field(CALC, "A#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals CP")
+   field(INPA, "BO-CalSys:ADC0:Data-Mon.STAT CP")
+   field(INPB, "BO-CalSys:ADC0:Data-Mon CP")
+}
+record(waveform, "BO-CalSys:ADC1:Data-Mon"){
+    field(PINI, "YES")
+    field(DESC, "ADC1 Data")
+    field(SCAN, "$(S=1) second")
+    field(DTYP, "stream")
+    field(INP,  "@ADC.proto getData(ADC1) $(PORT) $(A)")
+    field(FTVL, "DOUBLE")
+    field(NELM, "4")
+}
+record(calc, "BO-CalSys:ADC1:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "BO-CalSys:ADC1:Data-Mon.STAT CP")
+   field(INPB, "BO-CalSys:ADC1:Data-Mon CP")
+}
+record(waveform, "BO-CalSys:ADC2:Data-Mon"){
+    field(PINI, "YES")
+    field(DESC, "ADC2 Data")
+    field(SCAN, "$(S=1) second")
+    field(DTYP, "stream")
+    field(INP,  "@ADC.proto getData(ADC2) $(PORT) $(A)")
+    field(FTVL, "DOUBLE")
+    field(NELM, "4")
+}
+record(calc, "BO-CalSys:ADC2:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "BO-CalSys:ADC2:Data-Mon.STAT CP")
+   field(INPB, "BO-CalSys:ADC2:Data-Mon CP")
+}
+record(waveform, "BO-CalSys:ADC3:Data-Mon"){
+    field(PINI, "YES")
+    field(DESC, "ADC3 Data")
+    field(SCAN, "$(S=1) second")
+    field(DTYP, "stream")
+    field(INP,  "@ADC.proto getData(ADC3) $(PORT) $(A)")
+    field(FTVL, "DOUBLE")
+    field(NELM, "4")
+}
+record(calc, "BO-CalSys:ADC3:Data-Mon_enbl"){
+   field(CALC, "A#0")
+   field(INPA, "BO-CalSys:ADC3:Data-Mon.STAT CP")
+   field(INPB, "BO-CalSys:ADC3:Data-Mon CP")
 }
 
-
-
-record(mbbi, "RA-RaBO01:RF-RFCalSys:StatusCalOn"){
-    field(INP, "RA-RaBO01:RF-RFCalSys:Vals.VAL[0] CP MSS")
-
-    field(ZRVL, "0")
-    field(ONVL, "1")
-
-    field(ZRST, "Off")
-    field(ONST, "On")
-}
-
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm1_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[1] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm1_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm1_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm1_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm1_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-4.6759")
-    field(INPB, "26.107")
-    field(INPC, "-53.648")
-    field(INPD, "7.6581")
-    field(INPE, "26.307")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm1_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm1_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB1-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB1-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm1-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm1_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB1-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys1_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC0:Data-Mon.VAL[0] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC0:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys1_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC0:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys1_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys1_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm1_CALC"){
+    field(CALC, "0.2512*(F**4) + -3.75*(F**3) + 11.04*(F**2) + -51.47*F + 45.68")
+    field(INPF, "$(P):RF-RFCalSys1_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm1_enbl")
+    field(SDIS, "$(P):RF-RFCalSys1_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW1-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm1-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm1_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB1-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys1_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW1-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm1-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm1-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm1_enbl")
+    field(SDIS, "$(P):RF-RFCalSys1_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm2_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[2] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm2_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm2_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm2_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm2_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-3.1204")
-    field(INPB, "18.446")
-    field(INPC, "-39.974")
-    field(INPD, "-2.9709")
-    field(INPE, "29.637")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm2_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm2_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB2-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB2-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm2-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm2_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB2-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys2_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC0:Data-Mon.VAL[1] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC0:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys2_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC0:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys2_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys2_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm2_CALC"){
+    field(CALC, "0.149*(F**4) + -3.742*(F**3) + 12.17*(F**2) + -53.66*F + 47.09")
+    field(INPF, "$(P):RF-RFCalSys2_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm2_enbl")
+    field(SDIS, "$(P):RF-RFCalSys2_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW2-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm2-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm2_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB2-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys2_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW2-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm2-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm2-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm2_enbl")
+    field(SDIS, "$(P):RF-RFCalSys2_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm3_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[3] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm3_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm3_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm3_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm3_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-5.9411")
-    field(INPB, "32.361")
-    field(INPC, "-65.181")
-    field(INPD, "17.234")
-    field(INPE, "23.264")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm3_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm3_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB3-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB3-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm3-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm3_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB3-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys3_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC0:Data-Mon.VAL[2] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC0:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys3_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC0:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys3_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys3_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm3_CALC"){
+    field(CALC, "-0.4482*(F**4) + -0.5061*(F**3) + 5.411*(F**2) + -47.16*F + 44.51")
+    field(INPF, "$(P):RF-RFCalSys3_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm3_enbl")
+    field(SDIS, "$(P):RF-RFCalSys3_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW3-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm3-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm3_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB3-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys3_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW3-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm3-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm3-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm3_enbl")
+    field(SDIS, "$(P):RF-RFCalSys3_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm4_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[4] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm4_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm4_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm4_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm4_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-3.6413")
-    field(INPB, "20.226")
-    field(INPC, "-41.851")
-    field(INPD, "-2.412")
-    field(INPE, "29.996")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm4_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm4_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB4-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB4-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm4-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm4_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB4-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys4_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC0:Data-Mon.VAL[3] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC0:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys4_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC0:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys4_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys4_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm4_CALC"){
+    field(CALC, "0.1856*(F**4) + -3.278*(F**3) + 9.92*(F**2) + -50.15*F + 45.09")
+    field(INPF, "$(P):RF-RFCalSys4_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm4_enbl")
+    field(SDIS, "$(P):RF-RFCalSys4_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW4-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm4-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm4_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB4-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys4_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW4-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm4-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm4-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm4_enbl")
+    field(SDIS, "$(P):RF-RFCalSys4_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm5_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[5] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm5_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm5_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm5_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm5_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-5.3428")
-    field(INPB, "29.492")
-    field(INPC, "-60.338")
-    field(INPD, "13.793")
-    field(INPE, "24.592")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm5_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm5_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB5-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB5-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm5-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm5_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB5-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys5_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC1:Data-Mon.VAL[0] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC1:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys5_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC1:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys5_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys5_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm5_CALC"){
+    field(CALC, "0.06204*(F**4) + -3.055*(F**3) + 10.21*(F**2) + -51.47*F + 46.16")
+    field(INPF, "$(P):RF-RFCalSys5_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm5_enbl")
+    field(SDIS, "$(P):RF-RFCalSys5_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW5-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm5-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm5_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB5-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys5_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW5-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm5-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm5-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm5_enbl")
+    field(SDIS, "$(P):RF-RFCalSys5_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm6_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[6] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm6_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm6_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm6_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm6_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-5.4278")
-    field(INPB, "30.325")
-    field(INPC, "-62.507")
-    field(INPD, "15.762")
-    field(INPE, "23.949")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm6_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm6_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB6-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB6-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm6-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm6_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB6-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys6_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC1:Data-Mon.VAL[1] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC1:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys6_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC1:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys6_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys6_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm6_CALC"){
+    field(CALC, "-0.1082*(F**4) + -1.979*(F**3) + 7.966*(F**2) + -49.24*F + 45.19")
+    field(INPF, "$(P):RF-RFCalSys6_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm6_enbl")
+    field(SDIS, "$(P):RF-RFCalSys6_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW6-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm6-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm6_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB6-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys6_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW6-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm6-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm6-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm6_enbl")
+    field(SDIS, "$(P):RF-RFCalSys6_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm7_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[7] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm7_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm7_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm7_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm7_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-5.077")
-    field(INPB, "27.684")
-    field(INPC, "-56.011")
-    field(INPD, "9.2711")
-    field(INPE, "25.86")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm7_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm7_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB7-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB7-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm7-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm7_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB7-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys7_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC1:Data-Mon.VAL[2] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC1:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys7_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC1:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys7_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys7_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm7_CALC"){
+    field(CALC, "0.3741*(F**4) + -4.903*(F**3) + 14.07*(F**2) + -54.86*F + 47.47")
+    field(INPF, "$(P):RF-RFCalSys7_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm7_enbl")
+    field(SDIS, "$(P):RF-RFCalSys7_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW7-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm7-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm7_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB7-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys7_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW7-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm7-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm7-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm7_enbl")
+    field(SDIS, "$(P):RF-RFCalSys7_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm8_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[8] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm8_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm8_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm8_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm8_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-3.8038")
-    field(INPB, "22.541")
-    field(INPC, "-49.13")
-    field(INPD, "6.0158")
-    field(INPE, "26.347")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm8_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm8_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB8-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB8-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm8-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm8_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB8-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys8_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC1:Data-Mon.VAL[3] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC1:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys8_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC1:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys8_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys8_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm8_CALC"){
+    field(CALC, "-0.3443*(F**4) + -1.292*(F**3) + 7.643*(F**2) + -50.17*F + 45.49")
+    field(INPF, "$(P):RF-RFCalSys8_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm8_enbl")
+    field(SDIS, "$(P):RF-RFCalSys8_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW8-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm8-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm8_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB8-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys8_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW8-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm8-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm8-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm8_enbl")
+    field(SDIS, "$(P):RF-RFCalSys8_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm9_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[9] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm9_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm9_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm9_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm9_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-4.6637")
-    field(INPB, "26.944")
-    field(INPC, "-57.398")
-    field(INPD, "12.915")
-    field(INPE, "24.396")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm9_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm9_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB9-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB9-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm9-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm9_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB9-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys9_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC2:Data-Mon.VAL[0] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC2:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys9_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC2:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys9_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys9_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm9_CALC"){
+    field(CALC, "0.2122*(F**4) + -3.335*(F**3) + 9.681*(F**2) + -50.03*F + 45.24")
+    field(INPF, "$(P):RF-RFCalSys9_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm9_enbl")
+    field(SDIS, "$(P):RF-RFCalSys9_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW9-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm9-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm9_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB9-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys9_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW9-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm9-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm9-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm9_enbl")
+    field(SDIS, "$(P):RF-RFCalSys9_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm10_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[10] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm10_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm10_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm10_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm10_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-4.2941")
-    field(INPB, "24.195")
-    field(INPC, "-50.567")
-    field(INPD, "5.7414")
-    field(INPE, "26.928")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm10_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm10_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB10-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB10-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm10-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm10_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB10-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys10_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC2:Data-Mon.VAL[1] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC2:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys10_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC2:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys10_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys10_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm10_CALC"){
+    field(CALC, "-0.7763*(F**4) + 1.47*(F**3) + 1.543*(F**2) + -44.51*F + 44.04")
+    field(INPF, "$(P):RF-RFCalSys10_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm10_enbl")
+    field(SDIS, "$(P):RF-RFCalSys10_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW10-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm10-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm10_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB10-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys10_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW10-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm10-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm10-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm10_enbl")
+    field(SDIS, "$(P):RF-RFCalSys10_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm11_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[11] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm11_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm11_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm11_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm11_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-5.1056")
-    field(INPB, "28.652")
-    field(INPC, "-59.559")
-    field(INPD, "13.93")
-    field(INPE, "24.27")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm11_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm11_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB11-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB11-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm11-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm11_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB11-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys11_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC2:Data-Mon.VAL[2] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC2:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys11_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC2:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys11_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys11_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm11_CALC"){
+    field(CALC, "0.1688*(F**4) + -3.015*(F**3) + 8.901*(F**2) + -48.98*F + 44.59")
+    field(INPF, "$(P):RF-RFCalSys11_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm11_enbl")
+    field(SDIS, "$(P):RF-RFCalSys11_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW11-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm11-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm11_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB11-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys11_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW11-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm11-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm11-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm11_enbl")
+    field(SDIS, "$(P):RF-RFCalSys11_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm12_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[12] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm12_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm12_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm12_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm12_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-5.7288")
-    field(INPB, "31.765")
-    field(INPC, "-65.01")
-    field(INPD, "17.506")
-    field(INPE, "23.393")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm12_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm12_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB12-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB12-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm12-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm12_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB12-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys12_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC2:Data-Mon.VAL[3] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC2:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys12_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC2:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys12_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys12_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm12_CALC"){
+    field(CALC, "-0.213*(F**4) + -1.859*(F**3) + 8.205*(F**2) + -50.12*F + 45.84")
+    field(INPF, "$(P):RF-RFCalSys12_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm12_enbl")
+    field(SDIS, "$(P):RF-RFCalSys12_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW12-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm12-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm12_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB12-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys12_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW12-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm12-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm12-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm12_enbl")
+    field(SDIS, "$(P):RF-RFCalSys12_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm13_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[13] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm13_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm13_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm13_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm13_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-4.9173")
-    field(INPB, "27.402")
-    field(INPC, "-56.513")
-    field(INPD, "10.57")
-    field(INPE, "25.407")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm13_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm13_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB13-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB13-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm13-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm13_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB13-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys13_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC3:Data-Mon.VAL[0] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC3:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys13_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC3:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys13_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys13_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm13_CALC"){
+    field(CALC, "-0.3468*(F**4) + -1.227*(F**3) + 7.374*(F**2) + -49.76*F + 45.6")
+    field(INPF, "$(P):RF-RFCalSys13_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm13_enbl")
+    field(SDIS, "$(P):RF-RFCalSys13_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW13-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm13-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm13_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB13-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys13_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW13-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm13-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm13-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm13_enbl")
+    field(SDIS, "$(P):RF-RFCalSys13_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm14_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[14] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm14_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm14_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm14_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm14_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-4.2051")
-    field(INPB, "23.956")
-    field(INPC, "-50.449")
-    field(INPD, "6.3015")
-    field(INPE, "26.805")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm14_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm14_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB14-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB14-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm14-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm14_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB14-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys14_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC3:Data-Mon.VAL[1] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC3:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys14_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC3:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys14_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys14_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm14_CALC"){
+    field(CALC, "0.09841*(F**4) + -3.509*(F**3) + 11.62*(F**2) + -52.73*F + 46.36")
+    field(INPF, "$(P):RF-RFCalSys14_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm14_enbl")
+    field(SDIS, "$(P):RF-RFCalSys14_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW14-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm14-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm14_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB14-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys14_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW14-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm14-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm14-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm14_enbl")
+    field(SDIS, "$(P):RF-RFCalSys14_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm15_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[15] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm15_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm15_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm15_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm15_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-4.7969")
-    field(INPB, "27.076")
-    field(INPC, "-56.348")
-    field(INPD, "10.916")
-    field(INPE, "24.922")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm15_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm15_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB15-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB15-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm15-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm15_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB15-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys15_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC3:Data-Mon.VAL[2] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC3:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys15_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC3:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys15_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys15_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm15_CALC"){
+    field(CALC, "-0.2635*(F**4) + -0.8597*(F**3) + 5.384*(F**2) + -47.16*F + 44.82")
+    field(INPF, "$(P):RF-RFCalSys15_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm15_enbl")
+    field(SDIS, "$(P):RF-RFCalSys15_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW15-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm15-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm15_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB15-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys15_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW15-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm15-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm15-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm15_enbl")
+    field(SDIS, "$(P):RF-RFCalSys15_enbl")
 }
 
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm16_ADC"){
-    field(CALC, "((A/10)/4095.)*5.")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:Vals.VAL[16] CP MSS")
-    field(EGU,  "V")
-    field(PREC, "2")
-
-    field(LOLO, "0.3")
-    field(LLSV, "INVALID")
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm16_enbl"){
-   field(CALC, "(A+B)#0")
-   field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm16_ADC.STAT CP")
-   field(INPB, "RA-RaBO01:RF-RFCalSys:Vals_enbl CP")
-
-   field(INPC, "RA-RaBO01:RF-RFCalSys:PwrdBm16_ADC CP") # Rec process
-}
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm16_CALC"){
-    field(CALC, "A*(F**4) + B*(F**3) + C*(F**2) + D*F + E")
-    field(INPA, "-6.3593")
-    field(INPB, "35.747")
-    field(INPC, "-73.787")
-    field(INPD, "25.687")
-    field(INPE, "20.502")
-    field(EGU,  "dBm")
-    field(PREC, "2")
-
-    field(INPF, "RA-RaBO01:RF-RFCalSys:PwrdBm16_ADC CP MSS")
-
-    field(DISV, "1")
-    field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm16_enbl")
-}
-
-record(ao, "RA-RaBO01:RF-RFCalSys:OFSdB16-Mon"){
+record(ao, "$(P):RF-RFCalSys:OFSdB16-Mon"){
     field(PREC, "2")
     field(EGU,  "dB")
     field(VAL,  "0")
     field(PINI, "YES")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrdBm16-Mon"){
-    field(CALC, "(A>-41.0)?(A + B):(-Inf)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm16_CALC CP MSS")
-    field(INPB, "RA-RaBO01:RF-RFCalSys:OFSdB16-Mon CP MSS")
+record(calc, "$(P):RF-RFCalSys16_ADC"){
+    field(CALC, "(5.*A/4095.)*(1.)")
+    field(INPA, "BO-CalSys:ADC3:Data-Mon.VAL[3] CP MSS")
+    field(EGU,  "V")
+    field(PREC, "2")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "BO-CalSys:ADC3:Data-Mon_enbl")
+    field(LOLO, "0.3")
+    field(LLSV, "INVALID")
+}
+record(calc, "$(P):RF-RFCalSys16_enbl"){
+   field(CALC, "(A+B)#0")
+   field(INPA, "BO-CalSys:ADC3:Data-Mon_enbl CP")
+   field(INPB, "$(P):RF-RFCalSys16_ADC.STAT CP")
+   field(INPC, "$(P):RF-RFCalSys16_ADC CP")
+}
+record(calc, "$(P):RF-RFCalSys:PwrdBm16_CALC"){
+    field(CALC, "0.4268*(F**4) + -4.361*(F**3) + 11.61*(F**2) + -51.55*F + 45.6")
+    field(INPF, "$(P):RF-RFCalSys16_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm16_enbl")
+    field(SDIS, "$(P):RF-RFCalSys16_enbl")
 }
-
-record(calc, "RA-RaBO01:RF-RFCalSys:PwrW16-Mon"){
+record(calc, "$(P):RF-RFCalSys:PwrdBm16-Mon"){
+    field(CALC, "(A>-41.)?(A + B):(-Inf)")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm16_CALC CP MSS")
+    field(INPB, "$(P):RF-RFCalSys:OFSdB16-Mon CP MSS")
+    field(PREC, "2")
+    field(EGU,  "dBm")
+    field(DISV, "1")
+    field(DISS, "INVALID")
+    field(SDIS, "$(P):RF-RFCalSys16_enbl")
+}
+record(calc, "$(P):RF-RFCalSys:PwrW16-Mon"){
     field(CALC, "(10**(A/10))*(1/1000)")
-    field(INPA, "RA-RaBO01:RF-RFCalSys:PwrdBm16-Mon CP MSS")
+    field(INPA, "$(P):RF-RFCalSys:PwrdBm16-Mon CP MSS")
     field(PREC, "2")
     field(EGU,  "W")
     field(DISV, "1")
     field(DISS, "INVALID")
-    field(SDIS, "RA-RaBO01:RF-RFCalSys:PwrdBm16_enbl")
+    field(SDIS, "$(P):RF-RFCalSys16_enbl")
 }
-

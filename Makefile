@@ -34,3 +34,33 @@ clean:
 	find . -name '*.pyc' -exec rm --force {} +
 	find . -name '*.pyo' -exec rm --force {} +
 	find . -name '__pycache__' -exec rm -rf {} +
+
+spi-restart:
+	systemctl restart cas-rf-poe-adc.service
+
+spi-start:
+	systemctl restart cas-rf-poe-adc.service
+
+spi-stop:
+	systemctl restart cas-rf-poe-adc.service
+
+spi-enable:
+	systemctl enable cas-rf-poe-adc.service
+
+spi-install: spi-start spi-enable
+	cp -v services/cas-rf-poe-adc-spi.service /etc/systemd/system
+
+restart-cal-sys-bo:
+	systemctl restart cas-rf-poe-adc-ioc-BO-CalSys.service
+
+install-cal-sys-bo:
+	cp -v services/cas-rf-poe-adc-ioc-BO-CalSys.service /etc/systemd/system
+	systemctl enable cas-rf-poe-adc-ioc-BO-CalSys.service
+	systemctl start  cas-rf-poe-adc-ioc-BO-CalSys.service
+
+status-cal-sys-bo:
+	systemctl status cas-rf-poe-adc-ioc-BO-CalSys.service
+
+stop-cal-sys-services:
+	systemctl stop  cas-rf-calibration-module-ioc.service
+	systemctl disable  cas-rf-calibration-module-ioc.service
