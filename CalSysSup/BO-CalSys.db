@@ -496,7 +496,7 @@ record(calc, "$(P):RF-RFCalSys9_enbl"){
    field(INPC, "$(P):RF-RFCalSys9_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm9_CALC"){
-    field(CALC, "-4.241*(F**4) + -25.158*(F**3) + -54.707*(F**2) + 11.242*F + 24.921")
+    field(CALC, "-4.241*(F**4) + 25.158*(F**3) + -54.707*(F**2) + 11.242*F + 24.921")
     field(INPF, "$(P):RF-RFCalSys9_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")

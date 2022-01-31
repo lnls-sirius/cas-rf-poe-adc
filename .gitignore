@@ -1,5 +1,8 @@
 *.pyc
+PSSup/O.linux-arm/
+PlDrvSup/O.linux-arm/
 __pycache__
+autosave/SIA-CalSys.sav.bu
 autosave/SIA-CalSys.sav_*
 bin/
 configure/O.linux-arm/
@@ -7,5 +10,5 @@ db/
 dbd/
 iocBoot/iocpoeAdc/envPaths
 poeAdcApp/Db/O.linux-arm/
-poeAdcApp/src/O.Common/
-poeAdcApp/src/O.linux-arm/
+**/O.Common/
+**/O.linux-arm/
