@@ -80,7 +80,7 @@ record(calc, "$(P):RF-RFCalSys1_enbl"){
    field(INPC, "$(P):RF-RFCalSys1_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm1_CALC"){
-    field(CALC, "0.2512*(F**4) + -3.75*(F**3) + 11.04*(F**2) + -51.47*F + 45.68")
+    field(CALC, "-4.632*(F**4) + 25.999*(F**3) + -54.022*(F**2) + 8.987*F + 25.695")
     field(INPF, "$(P):RF-RFCalSys1_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -132,7 +132,7 @@ record(calc, "$(P):RF-RFCalSys2_enbl"){
    field(INPC, "$(P):RF-RFCalSys2_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm2_CALC"){
-    field(CALC, "0.149*(F**4) + -3.742*(F**3) + 12.17*(F**2) + -53.66*F + 47.09")
+    field(CALC, "-4.407*(F**4) + 24.914*(F**3) + -52.123*(F**2) + 7.434*F + 26.372")
     field(INPF, "$(P):RF-RFCalSys2_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -184,7 +184,7 @@ record(calc, "$(P):RF-RFCalSys3_enbl"){
    field(INPC, "$(P):RF-RFCalSys3_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm3_CALC"){
-    field(CALC, "-0.4482*(F**4) + -0.5061*(F**3) + 5.411*(F**2) + -47.16*F + 44.51")
+    field(CALC, "-5.273*(F**4) + 28.544*(F**3) + -57.572*(F**2) + 11.047*F + 25.288")
     field(INPF, "$(P):RF-RFCalSys3_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -236,7 +236,7 @@ record(calc, "$(P):RF-RFCalSys4_enbl"){
    field(INPC, "$(P):RF-RFCalSys4_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm4_CALC"){
-    field(CALC, "0.1856*(F**4) + -3.278*(F**3) + 9.92*(F**2) + -50.15*F + 45.09")
+    field(CALC, "-5.014*(F**4) + 27.455*(F**3) + -55.759*(F**2) + 9.837*F + 25.462")
     field(INPF, "$(P):RF-RFCalSys4_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -288,7 +288,7 @@ record(calc, "$(P):RF-RFCalSys5_enbl"){
    field(INPC, "$(P):RF-RFCalSys5_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm5_CALC"){
-    field(CALC, "0.06204*(F**4) + -3.055*(F**3) + 10.21*(F**2) + -51.47*F + 46.16")
+    field(CALC, "-4.349*(F**4) + 24.352*(F**3) + -50.582*(F**2) + 5.635*F + 27.04")
     field(INPF, "$(P):RF-RFCalSys5_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -340,7 +340,7 @@ record(calc, "$(P):RF-RFCalSys6_enbl"){
    field(INPC, "$(P):RF-RFCalSys6_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm6_CALC"){
-    field(CALC, "-0.1082*(F**4) + -1.979*(F**3) + 7.966*(F**2) + -49.24*F + 45.19")
+    field(CALC, "-3.988*(F**4) + 22.933*(F**3) + -48.644*(F**2) + 4.895*F + 26.825")
     field(INPF, "$(P):RF-RFCalSys6_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -392,7 +392,7 @@ record(calc, "$(P):RF-RFCalSys7_enbl"){
    field(INPC, "$(P):RF-RFCalSys7_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm7_CALC"){
-    field(CALC, "0.3741*(F**4) + -4.903*(F**3) + 14.07*(F**2) + -54.86*F + 47.47")
+    field(CALC, "-2.428*(F**4) + 14.981*(F**3) + -34.136*(F**2) + -6.623*F + 30.582")
     field(INPF, "$(P):RF-RFCalSys7_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -444,7 +444,7 @@ record(calc, "$(P):RF-RFCalSys8_enbl"){
    field(INPC, "$(P):RF-RFCalSys8_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm8_CALC"){
-    field(CALC, "-0.3443*(F**4) + -1.292*(F**3) + 7.643*(F**2) + -50.17*F + 45.49")
+    field(CALC, "-5.777*(F**4) + 31.503*(F**3) + -63.307*(F**2) + 14.987*F + 24.146")
     field(INPF, "$(P):RF-RFCalSys8_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -496,7 +496,7 @@ record(calc, "$(P):RF-RFCalSys9_enbl"){
    field(INPC, "$(P):RF-RFCalSys9_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm9_CALC"){
-    field(CALC, "0.2122*(F**4) + -3.335*(F**3) + 9.681*(F**2) + -50.03*F + 45.24")
+    field(CALC, "-5.638*(F**4) + 31.678*(F**3) + -65.795*(F**2) + 19.31*F + 22.464")
     field(INPF, "$(P):RF-RFCalSys9_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -548,7 +548,7 @@ record(calc, "$(P):RF-RFCalSys10_enbl"){
    field(INPC, "$(P):RF-RFCalSys10_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm10_CALC"){
-    field(CALC, "-0.7763*(F**4) + 1.47*(F**3) + 1.543*(F**2) + -44.51*F + 44.04")
+    field(CALC, "-5.462*(F**4) + 31.063*(F**3) + -64.8*(F**2) + 18.26*F + 22.953")
     field(INPF, "$(P):RF-RFCalSys10_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -600,7 +600,7 @@ record(calc, "$(P):RF-RFCalSys11_enbl"){
    field(INPC, "$(P):RF-RFCalSys11_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm11_CALC"){
-    field(CALC, "0.1688*(F**4) + -3.015*(F**3) + 8.901*(F**2) + -48.98*F + 44.59")
+    field(CALC, "-4.291*(F**4) + 24.309*(F**3) + -51.077*(F**2) + 6.869*F + 26.079")
     field(INPF, "$(P):RF-RFCalSys11_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -652,7 +652,7 @@ record(calc, "$(P):RF-RFCalSys12_enbl"){
    field(INPC, "$(P):RF-RFCalSys12_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm12_CALC"){
-    field(CALC, "-0.213*(F**4) + -1.859*(F**3) + 8.205*(F**2) + -50.12*F + 45.84")
+    field(CALC, "-4.544*(F**4) + 25.116*(F**3) + -51.785*(F**2) + 6.384*F + 26.898")
     field(INPF, "$(P):RF-RFCalSys12_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -704,7 +704,7 @@ record(calc, "$(P):RF-RFCalSys13_enbl"){
    field(INPC, "$(P):RF-RFCalSys13_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm13_CALC"){
-    field(CALC, "-0.3468*(F**4) + -1.227*(F**3) + 7.374*(F**2) + -49.76*F + 45.6")
+    field(CALC, "-2.887*(F**4) + 17.855*(F**3) + -40.164*(F**2) + -1.565*F + 28.655")
     field(INPF, "$(P):RF-RFCalSys13_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -756,7 +756,7 @@ record(calc, "$(P):RF-RFCalSys14_enbl"){
    field(INPC, "$(P):RF-RFCalSys14_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm14_CALC"){
-    field(CALC, "0.09841*(F**4) + -3.509*(F**3) + 11.62*(F**2) + -52.73*F + 46.36")
+    field(CALC, "-4.378*(F**4) + 24.323*(F**3) + -50.12*(F**2) + 5.212*F + 27.045")
     field(INPF, "$(P):RF-RFCalSys14_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -808,7 +808,7 @@ record(calc, "$(P):RF-RFCalSys15_enbl"){
    field(INPC, "$(P):RF-RFCalSys15_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm15_CALC"){
-    field(CALC, "-0.2635*(F**4) + -0.8597*(F**3) + 5.384*(F**2) + -47.16*F + 44.82")
+    field(CALC, "-5.006*(F**4) + 28.789*(F**3) + -60.699*(F**2) + 15.13*F + 23.962")
     field(INPF, "$(P):RF-RFCalSys15_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
@@ -860,7 +860,7 @@ record(calc, "$(P):RF-RFCalSys16_enbl"){
    field(INPC, "$(P):RF-RFCalSys16_ADC CP")
 }
 record(calc, "$(P):RF-RFCalSys:PwrdBm16_CALC"){
-    field(CALC, "0.4268*(F**4) + -4.361*(F**3) + 11.61*(F**2) + -51.55*F + 45.6")
+    field(CALC, "-4.997*(F**4) + 27.963*(F**3) + -57.845*(F**2) + 12.062*F + 24.776")
     field(INPF, "$(P):RF-RFCalSys16_ADC CP MSS")
     field(PREC, "2")
     field(EGU,  "dBm")
